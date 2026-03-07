@@ -1,0 +1,138 @@
+/* ════════════════════════════════════════
+   RESPONSIVE.CSS
+   Progressive enhancement — mobile first.
+   كل حاجة هنا تعديل على الـ base فقط.
+   لا يوجد ستايل ابتدائي هنا.
+════════════════════════════════════════ */
+
+/* ══ TABLET ≥ 580px ══ */
+@media (min-width: 580px) {
+
+    /* Buttons: full width → auto */
+    .btn-primary,
+    .btn-ghost {
+        width: auto;
+    }
+
+    .hero-btns {
+        flex-direction: row;
+    }
+
+    /* Pain: 2 columns */
+    .pain-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Testimonials: 2 columns */
+    .testis {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--sp-3);
+    }
+
+    /* Program phases: 3 columns */
+    .phases {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Offer card padding */
+    .offer-card {
+        padding: 52px var(--sp-8) var(--sp-8);
+    }
+
+    /* Smart CTA max-width */
+    #smart-cta {
+        max-width: 440px;
+    }
+}
+
+
+/* ══ DESKTOP ≥ 900px ══ */
+@media (min-width: 900px) {
+
+    /* Section padding increase */
+    section {
+        padding: 76px 5% 80px;
+    }
+
+    /* Solution: 2 columns side by side */
+    .sol-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--sp-12);
+        align-items: center;
+    }
+
+    .sol-visual {
+        margin-top: 0;
+    }
+
+    /* Trainer: photo + info side by side */
+    .trainer-wrap {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+        gap: var(--sp-10);
+        align-items: start;
+    }
+
+    .trainer-photo {
+        aspect-ratio: 3 / 4;
+        width: 240px;
+    }
+
+    /* Testimonials: 3 columns */
+    .testis {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Includes: 3 columns */
+    .includes {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Smart CTA max-width */
+    #smart-cta {
+        max-width: 480px;
+    }
+
+    /* ── HOVER STATES (desktop only) ── */
+    .btn-primary:hover {
+        background: var(--clr-gold-lt);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-gold-lg);
+    }
+
+    .btn-ghost:hover {
+        border-color: var(--clr-gold);
+        color: var(--clr-gold);
+    }
+
+    .cta-static:hover {
+        background: var(--clr-gold-lt);
+    }
+
+    .pain-card:hover {
+        border-color: #383838;
+    }
+
+    .pain-card:hover::before {
+        opacity: 1;
+    }
+
+    .sol-item:hover {
+        border-color: var(--clr-gold);
+        background: rgba(212, 168, 67, .04);
+    }
+
+    .testi:hover {
+        border-color: var(--clr-gold);
+    }
+
+    .phase:hover {
+        border-color: var(--clr-gold);
+    }
+
+    .faq-item:hover {
+        border-color: var(--clr-border);
+    }
+}

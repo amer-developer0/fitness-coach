@@ -1,0 +1,41 @@
+/* ════════════════════════════════════════
+   FONTS.CSS
+   تحميل الخطوط من الملفات المحلية فقط
+   لا يوجد أي استدعاء خارجي هنا
+════════════════════════════════════════ */
+
+/* ── Almarai — Regular 400 ── */
+@font-face {
+    font-family: 'Almarai';
+    src: url('../fonts/Almarai/Almarai-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ── Almarai — Bold 700 ── */
+@font-face {
+    font-family: 'Almarai';
+    src: url('../fonts/Almarai/Almarai-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ── Almarai — ExtraBold 800 ── */
+@font-face {
+    font-family: 'Almarai';
+    src: url('../fonts/Almarai/Almarai-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ── Noto Kufi Arabic — Variable Font (400 → 900) ── */
+@font-face {
+    font-family: 'Noto Kufi Arabic';
+    src: url('../fonts/Noto_Kufi_Arabic/NotoKufiArabic-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400 900;
+    font-style: normal;
+    font-display: swap;
+}
