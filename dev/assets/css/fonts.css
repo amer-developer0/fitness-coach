@@ -1,0 +1,84 @@
+/* ════════════════════════════════════════
+   FONTS.CSS
+   تعريف كل الخطوط المستخدمة في المشروع
+   المسار النسبي من assets/css/ → ../fonts/
+   استدعيه في أي ملف HTML بـ:
+   <link rel="stylesheet" href="assets/css/fonts.css">
+   أو من داخل demos/:
+   <link rel="stylesheet" href="../assets/css/fonts.css">
+════════════════════════════════════════ */
+
+
+/* ══════════════════════════════════════
+   ALMARAI
+   الاستخدام: نص الجسم في كل النماذج
+══════════════════════════════════════ */
+
+@font-face {
+    font-family: 'Almarai';
+    src: url('../fonts/Almarai/Almarai-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Almarai';
+    src: url('../fonts/Almarai/Almarai-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Almarai';
+    src: url('../fonts/Almarai/Almarai-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* ══════════════════════════════════════
+   NOTO KUFI ARABIC — Variable Font
+   الاستخدام: عناوين dark, female, premium, arabic
+   الأوزان المتاحة: 400 → 900
+══════════════════════════════════════ */
+
+@font-face {
+    font-family: 'Noto Kufi Arabic';
+    src: url('../fonts/Noto_Kufi_Arabic/NotoKufiArabic-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* ══════════════════════════════════════
+   CAIRO — Variable Font
+   الاستخدام: عناوين ونص demo-medical
+   الأوزان المتاحة: 200 → 700
+══════════════════════════════════════ */
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('../fonts/Cairo/Cairo-VariableFont_slnt,wght.ttf') format('truetype');
+    font-weight: 200 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* ══════════════════════════════════════
+   CORMORANT GARAMOND — Variable Font
+   الاستخدام: عناوين demo-premium (إنجليزي)
+   الأوزان المتاحة: 300 → 700
+══════════════════════════════════════ */
+
+@font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('../fonts/Cormorant_Garamond/CormorantGaramond-VariableFont_wght.ttf') format('truetype');
+    font-weight: 300 700;
+    font-style: normal;
+    font-display: swap;
+}
