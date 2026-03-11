@@ -1,0 +1,361 @@
+/* ══════════════════════════════════════════
+   FONTS
+══════════════════════════════════════════ */
+@font-face {
+    font-family: 'Noto Kufi Arabic';
+    src: url('../../assets/fonts/Noto_Kufi_Arabic/NotoKufiArabic-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Almarai';
+    src: url('../../assets/fonts/Almarai/Almarai-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Almarai';
+    src: url('../../assets/fonts/Almarai/Almarai-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Almarai';
+    src: url('../../assets/fonts/Almarai/Almarai-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ══════════════════════════════════════════
+   VARIABLES
+══════════════════════════════════════════ */
+:root {
+    --bg: #0c0c0c;
+    --bg2: #141414;
+    --bg3: #1c1c1c;
+    --border: #2a2a2a;
+    --white: #f0f0eb;
+    --gray: #666660;
+    --gray2: #444440;
+
+    /* card accents */
+    --dark-color: #d4a843;
+    --female-color: #e8927c;
+    --medical-color: #2d6a9f;
+    --premium-color: #c9a84c;
+    --arabic-color: #b8945a;
+
+    --radius: 16px;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ══════════════════════════════════════════
+   RESET & BASE
+══════════════════════════════════════════ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Almarai', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+    direction: rtl;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ══════════════════════════════════════════
+   PAGE WRAPPER
+══════════════════════════════════════════ */
+.page-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 24px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+/* ══════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════ */
+.header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: var(--gray);
+    margin-bottom: 4px;
+}
+
+.header-title {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--white);
+    letter-spacing: -0.02em;
+}
+
+.header-sub {
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+/* ══════════════════════════════════════════
+   GRID
+══════════════════════════════════════════ */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+/* last card (arabic) spans full width */
+.grid .card:last-child {
+    grid-column: 1 / -1;
+}
+
+/* ══════════════════════════════════════════
+   CARD
+══════════════════════════════════════════ */
+.card {
+    position: relative;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow: hidden;
+    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* colored top border accent */
+.card-accent {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 3px;
+    border-radius: var(--radius) var(--radius) 0 0;
+    transition: height var(--transition);
+}
+
+.card:hover .card-accent {
+    height: 4px;
+}
+
+/* per-theme accent colors */
+.card--dark {
+    --accent: var(--dark-color);
+}
+
+.card--female {
+    --accent: var(--female-color);
+}
+
+.card--medical {
+    --accent: var(--medical-color);
+}
+
+.card--premium {
+    --accent: var(--premium-color);
+}
+
+.card--arabic {
+    --accent: var(--arabic-color);
+}
+
+.card-accent {
+    background: var(--accent);
+}
+
+.card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 16px 40px color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+/* icon */
+.card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--accent);
+    transition: background var(--transition);
+}
+
+.card:hover .card-icon {
+    background: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+/* body text */
+.card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.card-code {
+    font-size: 0.72rem;
+    color: var(--accent);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.04em;
+    opacity: 0.8;
+}
+
+.card-title {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--white);
+    line-height: 1.3;
+}
+
+.card-desc {
+    font-size: 0.82rem;
+    color: var(--gray);
+    line-height: 1.5;
+}
+
+/* tags */
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tag {
+    font-size: 0.72rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--gray);
+    font-family: 'Almarai', sans-serif;
+}
+
+/* arrow */
+.card-arrow {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 0.85rem;
+    color: var(--gray2);
+    transition: color var(--transition), transform var(--transition);
+}
+
+.card:hover .card-arrow {
+    color: var(--accent);
+    transform: translateX(-4px);
+}
+
+/* badge */
+.card-badge {
+    position: absolute;
+    top: 18px;
+    left: 20px;
+    font-size: 0.68rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Almarai', sans-serif;
+}
+
+.card-badge--ready {
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #4ade80;
+}
+
+.card-badge--wip {
+    background: rgba(100, 100, 100, 0.12);
+    border: 1px solid rgba(100, 100, 100, 0.25);
+    color: var(--gray);
+}
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+.footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--gray2);
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+}
+
+.footer i {
+    color: #25d366;
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 600px) {
+    .page-wrapper {
+        padding: 40px 16px 32px;
+        gap: 36px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .grid .card:last-child {
+        grid-column: auto;
+    }
+
+    .header-title {
+        font-size: 1.35rem;
+    }
+}
