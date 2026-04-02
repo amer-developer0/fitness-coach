@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>برنامج التحول 90 يوم | [اسم المدرب]</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Noto+Kufi+Arabic:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   VARIABLES
+═══════════════════════════════════════ */
+:root {
+  --black:    #0a0a0a;
+  --dark:     #111111;
+  --card:     #181818;
+  --border:   #252525;
+  --gold:     #d4a843;
+  --gold-lt:  #f0c96a;
+  --gold-dim: rgba(212,168,67,0.14);
+  --white:    #f4f4ef;
+  --muted:    #7a7a7a;
+  --red:      #e05a3a;
+  --green:    #3aab6d;
+  --r:        13px;
+  --btn-h:    56px;
+}
+
+/* ═══════════════════════════════════════
+   RESET — mobile-first
+═══════════════════════════════════════ */
+*, *::before, *::after {
+  margin:0; padding:0; box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+html { scroll-behavior:smooth; }
+body {
+  background:var(--black); color:var(--white);
+  font-family:'Almarai', sans-serif; font-size:16px;
+  line-height:1.75; overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+body::before {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:998;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:.22;
+}
+section { padding:56px 4% 60px; }
+.container { width:100%; max-width:920px; margin:0 auto; }
+a { color:inherit; }
+
+/* ─── SCROLL PROGRESS ─── */
+#progress-bar {
+  position:fixed; top:0; right:0; left:0; height:3px;
+  background:var(--gold); transform-origin:right;
+  transform:scaleX(0); z-index:1001;
+  transition:transform .1s linear;
+}
+
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:13px 4%;
+  background:rgba(10,10,10,.92);
+  backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo {
+  font-family:'Noto Kufi Arabic',sans-serif;
+  font-weight:900; font-size:1.05rem; color:var(--gold);
+}
+.nav-cta {
+  background:var(--gold); color:var(--black);
+  padding:8px 18px; border-radius:50px;
+  font-weight:700; font-size:.82rem; text-decoration:none;
+  transition:background .2s;
+}
+.nav-cta:active { background:var(--gold-lt); }
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+#hero {
+  min-height:100svh;
+  display:flex; flex-direction:column; justify-content:center;
+  padding-top:88px; padding-bottom:110px;
+  position:relative; overflow:hidden;
+}
+.hero-glow {
+  position:absolute; width:420px; height:420px; pointer-events:none;
+  background:radial-gradient(circle, rgba(212,168,67,.1) 0%, transparent 70%);
+  right:-100px; top:25%;
+}
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--gold-dim); border:1px solid var(--gold);
+  color:var(--gold); padding:6px 15px; border-radius:50px;
+  font-size:.78rem; font-weight:700; margin-bottom:18px;
+  opacity:0; animation:fadeUp .55s .2s forwards; width:fit-content;
+}
+.hero-badge span {
+  width:7px; height:7px; border-radius:50%; background:var(--gold);
+  animation:pulse 1.5s infinite; flex-shrink:0;
+}
+h1.hero-headline {
+  font-family:'Noto Kufi Arabic',sans-serif;
+  font-size:clamp(1.9rem,7.5vw,3.8rem);
+  font-weight:900; line-height:1.25; margin-bottom:16px;
+  opacity:0; animation:fadeUp .55s .38s forwards;
+}
+h1.hero-headline em {
+  font-style:normal; color:var(--gold); position:relative;
+}
+h1.hero-headline em::after {
+  content:''; position:absolute; bottom:1px; right:0; left:0;
+  height:3px; background:var(--gold); border-radius:2px; opacity:.35;
+}
+.hero-sub {
+  font-size:clamp(.9rem,3.5vw,1.05rem); color:#aaa;
+  margin-bottom:26px; max-width:540px;
+  opacity:0; animation:fadeUp .55s .54s forwards;
+}
+.hero-btns {
+  display:flex; flex-direction:column; gap:11px;
+  opacity:0; animation:fadeUp .55s .7s forwards;
+}
+.btn-primary {
+  background:var(--gold); color:var(--black);
+  height:var(--btn-h); padding:0 26px; border-radius:50px;
+  font-weight:900; font-size:.98rem; text-decoration:none;
+  display:flex; align-items:center; justify-content:center; gap:9px;
+  box-shadow:0 0 36px rgba(212,168,67,.28);
+  transition:background .2s, transform .2s;
+}
+.btn-primary:active { background:var(--gold-lt); transform:scale(.98); }
+.btn-ghost {
+  height:var(--btn-h); padding:0 22px; border-radius:50px;
+  font-weight:600; font-size:.92rem; text-decoration:none;
+  border:1px solid var(--border); color:var(--white);
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  transition:border-color .2s, color .2s;
+}
+.btn-ghost:active { border-color:var(--gold); color:var(--gold); }
+.hero-proof {
+  margin-top:28px; display:flex; align-items:center; gap:13px; flex-wrap:wrap;
+  opacity:0; animation:fadeUp .55s .88s forwards;
+}
+.avatars { display:flex; }
+.avatars span {
+  width:32px; height:32px; border-radius:50%;
+  background:var(--card); border:2px solid var(--black);
+  margin-right:-9px; display:flex; align-items:center; justify-content:center;
+  font-size:.85rem;
+}
+.proof-txt { font-size:.82rem; color:var(--muted); }
+.proof-txt strong { color:var(--white); }
+
+/* ═══════════════════════════════════════
+   SHARED TYPOGRAPHY
+═══════════════════════════════════════ */
+.tag {
+  font-size:.84rem; font-weight:700; letter-spacing:1.5px;
+  text-transform:uppercase; color:var(--gold); margin-bottom:10px;
+  display:block;
+}
+.sec-h {
+  font-family:'Noto Kufi Arabic',sans-serif;
+  font-size:clamp(1.75rem,6vw,2.75rem);
+  font-weight:900; line-height:1.28; margin-bottom:12px;
+}
+.sec-sub {
+  color:var(--muted); font-size:clamp(.88rem,2.8vw,.97rem);
+  margin-bottom:32px; max-width:540px;
+}
+
+/* ═══════════════════════════════════════
+   PAIN
+═══════════════════════════════════════ */
+#pain { background:var(--dark); }
+.pain-grid { display:grid; gap:10px; }
+.pain-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:var(--r); padding:18px 16px;
+  display:flex; gap:13px; align-items:flex-start;
+  position:relative; overflow:hidden;
+}
+.pain-card::before {
+  content:''; position:absolute; top:0; right:0; left:0;
+  height:2px; background:var(--red); opacity:0; transition:opacity .3s;
+}
+.pain-card:active::before { opacity:1; }
+.pain-icon { font-size:1.45rem; flex-shrink:0; margin-top:2px; }
+.pain-card h3 { font-size:.9rem; font-weight:700; margin-bottom:4px; line-height:1.4; }
+.pain-card p  { font-size:.82rem; color:var(--muted); line-height:1.6; }
+
+/* ═══════════════════════════════════════
+   SOLUTION
+═══════════════════════════════════════ */
+.sol-visual {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:18px; padding:26px 20px;
+  text-align:center; position:relative; overflow:hidden;
+  margin-top:28px; margin-bottom:8px;
+}
+.sol-visual::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at 50% 0%,rgba(212,168,67,.11),transparent 60%);
+}
+.big-n {
+  font-family:'Noto Kufi Arabic',sans-serif;
+  font-size:5rem; font-weight:900; color:var(--gold); line-height:1;
+  margin-bottom:4px; position:relative;
+}
+.big-lbl { font-size:.95rem; color:var(--muted); }
+.stats-row { display:flex; gap:14px; margin-top:22px; justify-content:center; }
+.stat { text-align:center; }
+.stat-n {
+  font-family:'Noto Kufi Arabic',sans-serif;
+  font-size:1.4rem; font-weight:900; color:var(--white);
+}
+.stat-l { font-size:.72rem; color:var(--muted); margin-top:2px; }
+.placeholder-note {
+  font-size:.72rem; color:var(--red); margin-top:10px;
+  border:1px dashed rgba(224,90,58,.4); border-radius:6px;
+  padding:5px 10px; display:inline-block; line-height:1.4;
+}
+.sol-list { list-style:none; display:flex; flex-direction:column; gap:9px; }
+.sol-item {
+  display:flex; gap:13px; align-items:flex-start;
+  padding:15px 14px; background:var(--card);
+  border:1px solid var(--border); border-radius:var(--r);
+  transition:border-color .3s;
+}
+.sol-item:active { border-color:var(--gold); }
+.sol-num {
+  width:32px; height:32px; min-width:32px; border-radius:50%;
+  background:var(--gold-dim); border:1px solid var(--gold);
+  color:var(--gold); font-weight:900; font-size:.78rem;
+  display:flex; align-items:center; justify-content:center;
+}
+.sol-item h4 { font-size:.9rem; font-weight:700; margin-bottom:3px; }
+.sol-item p  { font-size:.82rem; color:var(--muted); line-height:1.55; }
+
+/* ═══════════════════════════════════════
+   PROGRAM
+═══════════════════════════════════════ */
+#program { background:var(--dark); }
+.phases { display:grid; gap:10px; margin-bottom:26px; }
+.phase {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:var(--r); padding:20px 16px;
+  position:relative; overflow:hidden;
+}
+.phase-bg {
+  font-family:'Noto Kufi Arabic',sans-serif;
+  font-size:3.2rem; font-weight:900; color:var(--gold); opacity:.1;
+  position:absolute; top:6px; left:10px; line-height:1; pointer-events:none;
+}
+.phase-tag {
+  display:inline-block; background:var(--gold-dim); color:var(--gold);
+  font-size:.7rem; font-weight:700; padding:3px 10px;
+  border-radius:50px; margin-bottom:10px;
+}
+.phase h3 { font-size:.92rem; font-weight:900; margin-bottom:5px; }
+.phase p  { font-size:.82rem; color:var(--muted); }
+.includes { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+.inc-item {
+  display:flex; align-items:center; gap:9px;
+  padding:12px 13px; background:var(--card);
+  border:1px solid var(--border); border-radius:10px;
+}
+.inc-ico {
+  width:30px; height:30px; min-width:30px; background:var(--gold-dim);
+  border-radius:7px; display:flex; align-items:center; justify-content:center;
+  font-size:.85rem;
+}
+.inc-txt { font-size:.82rem; font-weight:600; }
+
+/* ═══════════════════════════════════════
+   TESTIMONIALS
+═══════════════════════════════════════ */
+#testimonials { background:var(--black); }
+.testi-note {
+  background:rgba(212,168,67,.07); border:1px dashed rgba(212,168,67,.4);
+  border-radius:10px; padding:14px 16px; margin-bottom:22px;
+  font-size:.8rem; color:var(--gold); line-height:1.65;
+}
+.testi-note strong { display:block; margin-bottom:4px; font-size:.86rem; }
+.testis { display:flex; flex-direction:column; gap:11px; }
+.testi {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:var(--r); padding:20px 16px; position:relative;
+}
+.testi::before {
+  content:'"'; position:absolute; top:10px; left:14px;
+  font-size:3.5rem; color:var(--gold); opacity:.07;
+  font-family:serif; line-height:1; pointer-events:none;
+}
+.stars  { color:var(--gold); font-size:.8rem; margin-bottom:9px; }
+.testi-txt  { font-size:.86rem; color:#ccc; margin-bottom:14px; line-height:1.7; }
+.testi-auth { display:flex; align-items:center; gap:10px; }
+.testi-av {
+  width:38px; height:38px; border-radius:50%;
+  background:var(--gold-dim); border:2px solid var(--gold);
+  display:flex; align-items:center; justify-content:center; font-size:1rem;
+}
+.testi-name   { font-weight:700; font-size:.88rem; }
+.testi-result { font-size:.75rem; color:var(--green); font-weight:600; }
+
+/* ═══════════════════════════════════════
+   TRAINER
+═══════════════════════════════════════ */
+#trainer { background:var(--dark); }
+.trainer-photo {
+  width:100%; aspect-ratio:4/3; border-radius:15px;
+  background:var(--card); border:2px solid var(--border);
+  position:relative; overflow:hidden; margin-bottom:22px;
+}
+.trainer-photo img {
+  width:100%; height:100%; object-fit:cover; object-position:center top;
+  display:block; border-radius:13px;
+}
+.trainer-photo::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(to bottom, transparent 55%, rgba(10,10,10,.55));
+  pointer-events:none;
+}
+.trainer-name  {
+  font-family:'Noto Kufi Arabic',sans-serif;
+  font-size:1.6rem; font-weight:900; margin-bottom:4px;
+}
+.trainer-title { color:var(--gold); font-size:.82rem; font-weight:600; margin-bottom:12px; }
+.trainer-bio   { color:#aaa; font-size:.88rem; margin-bottom:18px; line-height:1.8; }
+.creds { display:flex; gap:7px; flex-wrap:wrap; }
+.cred  {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:7px; padding:6px 12px; font-size:.78rem; font-weight:600;
+}
+
+/* ═══════════════════════════════════════
+   OFFER
+═══════════════════════════════════════ */
+#offer { background:var(--dark); position:relative; overflow:hidden; }
+#offer::before {
+  content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:560px; height:280px;
+  background:radial-gradient(ellipse,rgba(212,168,67,.06),transparent 70%);
+  pointer-events:none;
+}
+.offer-card {
+  background:var(--card); border:2px solid var(--gold);
+  border-radius:18px; padding:52px 18px 26px;
+  max-width:640px; margin:0 auto; text-align:center;
+  position:relative;
+}
+.offer-ribbon {
+  position:absolute; top:-1px; left:50%; transform:translateX(-50%);
+  background:var(--red); color:#fff;
+  font-size:.72rem; font-weight:900; padding:5px 16px;
+  border-radius:0 0 10px 10px; white-space:nowrap;
+}
+.offer-h   {
+  font-family:'Noto Kufi Arabic',sans-serif;
+  font-size:1.25rem; font-weight:900; margin-bottom:5px;
+}
+.offer-sub { color:var(--muted); font-size:.86rem; margin-bottom:22px; }
+.price-old  { color:var(--muted); text-decoration:line-through; font-size:.95rem; margin-bottom:3px; }
+.price-main {
+  font-family:'Noto Kufi Arabic',sans-serif;
+  font-size:clamp(2.4rem,9vw,3.6rem);
+  font-weight:900; color:var(--gold); line-height:1;
+}
+.price-prd  { color:var(--muted); font-size:.8rem; margin-top:4px; margin-bottom:22px; }
+.offer-feats {
+  list-style:none; text-align:right;
+  display:flex; flex-direction:column; gap:9px; margin-bottom:26px;
+}
+.offer-feats li { display:flex; align-items:center; gap:9px; font-size:.86rem; }
+.chk {
+  width:19px; height:19px; min-width:19px; border-radius:50%;
+  background:rgba(58,171,109,.14); border:1px solid var(--green);
+  display:flex; align-items:center; justify-content:center;
+  font-size:.62rem; color:var(--green);
+}
+
+/* ── static spacer button (becomes invisible when smart-cta docks) ── */
+.cta-static {
+  display:flex; align-items:center; justify-content:center; gap:9px;
+  background:var(--gold); color:var(--black);
+  height:60px; border-radius:50px;
+  font-weight:900; font-size:1rem; text-decoration:none;
+  margin-bottom:13px;
+  box-shadow:0 0 45px rgba(212,168,67,.32);
+  transition:background .2s;
+  /* visibility controlled by JS class */
+}
+.cta-static:active { background:var(--gold-lt); }
+.cta-static.hidden-spacer {
+  visibility:hidden; pointer-events:none;
+}
+.cta-note { font-size:.78rem; color:var(--muted); }
+
+/* ══ SMART CTA ══
+   Before offer section → fixed floating pill at bottom
+   Once offer section reached → absolute inside offer-card (static)
+   Uses position:absolute so it never moves again after docking
+*/
+#smart-cta {
+  position:fixed;
+  bottom:18px; left:50%;
+  transform:translateX(-50%) translateY(20px);
+  width:calc(100% - 28px); max-width:400px;
+  height:60px;
+  background:var(--gold); color:var(--black);
+  border-radius:50px;
+  font-family:'Almarai',sans-serif; font-weight:900; font-size:.96rem;
+  text-decoration:none;
+  display:flex; align-items:center; justify-content:center; gap:9px;
+  box-shadow:0 8px 36px rgba(212,168,67,.48);
+  z-index:300;
+  opacity:0; pointer-events:none;
+  transition: opacity .35s ease, transform .35s ease;
+  white-space:nowrap;
+}
+#smart-cta:active { background:var(--gold-lt); }
+
+/* STATE 1 — floating pill, visible */
+#smart-cta.state-floating {
+  opacity:1; pointer-events:all;
+  transform:translateX(-50%) translateY(0);
+}
+
+/* STATE 2 — docked: becomes absolute inside offer-card, JS sets exact top */
+#smart-cta.state-docked {
+  position:absolute;
+  left:0;
+  width:100%; max-width:none;
+  transform:none;
+  opacity:1; pointer-events:all;
+  box-shadow:0 0 45px rgba(212,168,67,.32);
+  transition:none;
+  z-index:10;
+}
+
+/* ── COUNTDOWN ── */
+.cd-strip {
+  background:var(--gold-dim); border:1px solid var(--gold);
+  border-radius:10px; padding:11px 14px; margin-top:18px;
+  display:flex; align-items:center; justify-content:center;
+  flex-wrap:wrap; gap:9px; font-size:.82rem;
+}
+.cd-boxes { display:flex; gap:5px; }
+.cd-box {
+  background:var(--black); border:1px solid var(--gold); border-radius:7px;
+  padding:5px 9px; min-width:40px; text-align:center;
+  font-family:'Noto Kufi Arabic',sans-serif;
+  font-size:1.2rem; font-weight:900; color:var(--gold);
+}
+.cd-sep { color:var(--gold); font-weight:900; align-self:center; }
+
+/* ═══════════════════════════════════════
+   FAQ
+═══════════════════════════════════════ */
+#faq { background:var(--black); }
+#faq .container { display:flex; flex-direction:column; align-items:center; }
+#faq .tag, #faq .sec-h { text-align:center; width:100%; }
+.faq-list { display:flex; flex-direction:column; gap:9px; width:100%; max-width:700px; }
+.faq-item {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:var(--r); overflow:hidden; transition:border-color .3s;
+}
+.faq-item.open { border-color:var(--gold); }
+.faq-q {
+  width:100%; background:none; border:none; color:var(--white);
+  font-family:'Almarai',sans-serif; font-size:.9rem; font-weight:700;
+  text-align:right; padding:17px 18px; cursor:pointer;
+  display:flex; justify-content:space-between; align-items:center; gap:10px;
+}
+.faq-arr {
+  width:25px; height:25px; min-width:25px; border-radius:50%;
+  background:var(--gold-dim); border:1px solid var(--gold);
+  color:var(--gold); display:flex; align-items:center; justify-content:center;
+  font-size:.78rem; transition:transform .3s;
+}
+.faq-item.open .faq-arr { transform:rotate(180deg); }
+.faq-a {
+  max-height:0; overflow:hidden; padding:0 18px;
+  font-size:.85rem; color:var(--muted); line-height:1.7;
+  transition:max-height .38s ease, padding .28s;
+}
+.faq-item.open .faq-a { max-height:220px; padding:0 18px 16px; }
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+footer {
+  background:var(--dark); border-top:1px solid var(--border);
+  padding:32px 4% 36px;
+  text-align:center; color:var(--muted); font-size:.8rem;
+}
+.footer-logo {
+  font-family:'Noto Kufi Arabic',sans-serif;
+  font-size:1.05rem; font-weight:900; color:var(--gold); margin-bottom:8px;
+}
+
+/* ═══════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(15px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:.45; transform:scale(.78); }
+}
+.reveal {
+  opacity:0; transform:translateY(22px);
+  transition:opacity .5s ease, transform .5s ease;
+}
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* ═══════════════════════════════════════
+   TABLET ≥580px
+═══════════════════════════════════════ */
+@media (min-width:580px) {
+  .hero-btns { flex-direction:row; }
+  .btn-primary, .btn-ghost { width:auto; }
+  .pain-grid { grid-template-columns:1fr 1fr; }
+  .testis { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .phases { grid-template-columns:repeat(3,1fr); }
+  .offer-card { padding:34px 30px; }
+  #smart-cta { max-width:440px; font-size:1rem; }}
+
+/* ═══════════════════════════════════════
+   DESKTOP ≥900px
+═══════════════════════════════════════ */
+@media (min-width:900px) {
+  section { padding:76px 5% 80px; }
+  .btn-primary:hover { background:var(--gold-lt); transform:translateY(-2px); }
+  .btn-ghost:hover   { border-color:var(--gold); color:var(--gold); }
+  /* solution 2-col */
+  .sol-wrapper { display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; }
+  .sol-visual { margin-bottom:0; }
+  /* trainer 2-col */
+  .trainer-wrap { display:grid; grid-template-columns:240px 1fr; gap:44px; align-items:start; }
+  .trainer-photo { aspect-ratio:3/4; margin-bottom:0; width:240px; }
+  /* 3-col testis */
+  .testis { grid-template-columns:repeat(3,1fr); }
+  /* hover states */
+  .sol-item:hover  { border-color:var(--gold); background:rgba(212,168,67,.04); }
+  .pain-card:hover { border-color:#383838; }
+  .pain-card:hover::before { opacity:1; }
+  .testi:hover     { border-color:var(--gold); }
+  .phase:hover     { border-color:var(--gold); }
+  .cta-static:hover { background:var(--gold-lt); }
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">💪 [اسم المدرب]</div>
+  <a href="#offer" class="nav-cta">احجز مكانك</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-badge"><span></span> تدريب أونلاين 100% — من أي مكان</div>
+    <h1 class="hero-headline">
+      تحوّل جسمك في <em>90 يوم</em><br>من غير ما تحتاج جيم
+    </h1>
+    <p class="hero-sub">
+      تدريب شخصي أونلاين معاك أينما كنت. خطة مخصصة + متابعة يومية على واتساب + نتيجة مضمونة — أو ردّلك فلوسك.
+    </p>
+    <div class="hero-btns">
+      <a href="#offer" class="btn-primary">🚀 ابدأ رحلتك الآن</a>
+      <a href="#program" class="btn-ghost">🎯 شوف البرنامج</a>
+    </div>
+    <div class="hero-proof">
+      <div class="avatars">
+        <span>👨</span><span>👩</span><span>👨</span><span>👩</span>
+      </div>
+      <!-- ⚠️ غيّر الرقم بعدد عملائك الحقيقيين -->
+      <div class="proof-txt"><strong>[X] شخص</strong> بدأوا رحلتهم مع البرنامج ده</div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section id="pain">
+  <div class="container">
+    <div class="tag">المشكلة الحقيقية</div>
+    <h2 class="sec-h reveal">هل حسيت بده من قبل؟</h2>
+    <p class="sec-sub reveal">معظم الناس بتحاول تتغير بس بتقع في نفس الفخ كل مرة.</p>
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <div class="pain-icon">📱</div>
+        <div>
+          <h3>بتتابع ناس على إنستا وبتعمل زيّهم وما بتوصلش</h3>
+          <p>المحتوى مش مخصص ليك. جسمك غير، وقتك غير، ومشكلتك غير.</p>
+        </div>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">😤</div>
+        <div>
+          <h3>بتبدأ بحماس وبعد أسبوعين بتقف</h3>
+          <p>من غير متابعة حقيقية، الحماس بيخلص. محتاج حد يحاسبك مش بس يعلمك.</p>
+        </div>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">🏋️</div>
+        <div>
+          <h3>فاكر إن الجيم شرط أساسي</h3>
+          <p>مش صح. ناس اتحولوا وهما بيتدربوا في أوضتهم بدمبلز بسيطة.</p>
+        </div>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">💸</div>
+        <div>
+          <h3>دفعت في برامج ما فيهاش متابعة</h3>
+          <p>اشتريت PDF أو فيديوهات وبعدين لوحدك. ده محتوى، مش تدريب.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section id="solution">
+  <div class="container">
+    <div class="sol-wrapper">
+      <div>
+        <div class="tag">الحل</div>
+        <h2 class="sec-h reveal">النظام اللي بيشتغل فعلاً</h2>
+        <p class="sec-sub reveal">مش برنامج عادي. نظام متكامل بيتعامل معاك كشخص مش كرقم.</p>
+        <ul class="sol-list">
+          <li class="sol-item reveal">
+            <div class="sol-num">١</div>
+            <div><h4>خطة مخصصة ليك</h4><p>مش كوبي باستي. بنبني خطتك على جسمك، وقتك، وأكلك.</p></div>
+          </li>
+          <li class="sol-item reveal">
+            <div class="sol-num">٢</div>
+            <div><h4>متابعة أسبوعية مع المدرب</h4><p>بتبعتلي تقريرك كل أسبوع وبرد عليك بتعديل خلال 24 ساعة.</p></div>
+          </li>
+          <li class="sol-item reveal">
+            <div class="sol-num">٣</div>
+            <div><h4>واتساب جروب داعم</h4><p>مش لوحدك. مجتمع بيمشي معاك ويحفزك كل يوم.</p></div>
+          </li>
+          <li class="sol-item reveal">
+            <div class="sol-num">٤</div>
+            <div><h4>ضمان النتيجة</h4><p>لو اتبعت النظام 90 يوم ومحققتش النتيجة — هرد عليك الفلوس.</p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="sol-visual reveal">
+        <div class="big-n">90</div>
+        <div class="big-lbl">يوم لتغيير حياتك</div>
+        <div class="stats-row">
+          <!-- ⚠️ غيّر الأرقام بأرقامك الحقيقية -->
+          <div class="stat"><div class="stat-n">[X]+</div><div class="stat-l">متدرب</div></div>
+          <div class="stat"><div class="stat-n">[X]%</div><div class="stat-l">نسبة رضا</div></div>
+          <div class="stat"><div class="stat-n">[X] كجم</div><div class="stat-l">متوسط خسارة</div></div>
+        </div>
+        <div class="placeholder-note">📝 غيّر الأرقام بأرقامك الحقيقية</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section id="program">
+  <div class="container">
+    <div class="tag">محتوى البرنامج</div>
+    <h2 class="sec-h reveal">3 مراحل — 90 يوم</h2>
+    <p class="sec-sub reveal">كل مرحلة مبنية على اللي قبلها. التسلسل مش عشوائي.</p>
+    <div class="phases">
+      <div class="phase reveal">
+        <div class="phase-bg">١</div>
+        <div class="phase-tag">الشهر الأول</div>
+        <h3>مرحلة الأساس</h3>
+        <p>بناء عادات صح، تهيئة الجسم، إزالة المقاومة النفسية.</p>
+      </div>
+      <div class="phase reveal">
+        <div class="phase-bg">٢</div>
+        <div class="phase-tag">الشهر الثاني</div>
+        <h3>مرحلة التسريع</h3>
+        <p>رفع الكثافة، تعديل التغذية، الدخول في منطقة الحرق.</p>
+      </div>
+      <div class="phase reveal">
+        <div class="phase-bg">٣</div>
+        <div class="phase-tag">الشهر الثالث</div>
+        <h3>مرحلة التثبيت</h3>
+        <p>تثبيت النتائج وضمان إنك ما ترجعش للوراء.</p>
+      </div>
+    </div>
+    <div class="tag reveal" style="margin-bottom:14px">إيه اللي بتاخده</div>
+    <div class="includes">
+      <div class="inc-item reveal"><div class="inc-ico">🎯</div><div class="inc-txt">خطة تدريب مخصصة</div></div>
+      <div class="inc-item reveal"><div class="inc-ico">🥗</div><div class="inc-txt">خطة تغذية مناسبة لحياتك</div></div>
+      <div class="inc-item reveal"><div class="inc-ico">📱</div><div class="inc-txt">واتساب مباشر</div></div>
+      <div class="inc-item reveal"><div class="inc-ico">📊</div><div class="inc-txt">متابعة أسبوعية</div></div>
+      <div class="inc-item reveal"><div class="inc-ico">🎥</div><div class="inc-txt">فيديوهات شرح التمارين</div></div>
+      <div class="inc-item reveal"><div class="inc-ico">💡</div><div class="inc-txt">تعديلات فورية</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="tag">شهادات</div>
+    <h2 class="sec-h reveal">كلام ناس زيّك</h2>
+    <div class="testi-note reveal">
+      <strong>⚠️ تنبيه للمدرب — قبل ما ترفع الصفحة</strong>
+      استبدل الشهادات دي بكلام حقيقي من عملائك بالاسم والنتيجة الفعلية.
+      نشر شهادات وهمية غش وحرام في الدين، وممكن يضر بسمعتك قانونياً.
+    </div>
+    <div class="testis">
+      <div class="testi reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">[اكتب هنا كلام عميل حقيقي بنصه]</p>
+        <div class="testi-auth">
+          <div class="testi-av">👤</div>
+          <div>
+            <div class="testi-name">[اسم العميل]</div>
+            <div class="testi-result">خسّر [X] كيلو ✓</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">[اكتب هنا كلام عميل حقيقي بنصه]</p>
+        <div class="testi-auth">
+          <div class="testi-av">👤</div>
+          <div>
+            <div class="testi-name">[اسم العميل]</div>
+            <div class="testi-result">خسّرت [X] كيلو ✓</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">[اكتب هنا كلام عميل حقيقي بنصه]</p>
+        <div class="testi-auth">
+          <div class="testi-av">👤</div>
+          <div>
+            <div class="testi-name">[اسم العميل]</div>
+            <div class="testi-result">خسّر [X] كيلو ✓</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINER -->
+<section id="trainer">
+  <div class="container">
+    <div class="trainer-wrap">
+      <div class="trainer-photo">
+        <img
+          src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80"
+          alt="صورة المدرب - استبدلها بصورتك الشخصية"
+          loading="lazy"
+        >
+      </div>
+      <div>
+        <div class="tag">عن المدرب</div>
+        <div class="trainer-name reveal">[اسم المدرب]</div>
+        <div class="trainer-title reveal">كوتش فيتنس أونلاين</div>
+        <p class="trainer-bio reveal">
+          [أكتب هنا قصتك — مين أنت، ليه بدأت، وإيه اللي بتقدمه مختلف عن غيرك. الناس بتشتري منك إنت مش بس من البرنامج.]
+        </p>
+        <div class="creds reveal">
+          <div class="cred">🎓 [شهادتك]</div>
+          <div class="cred">📅 [X] سنين خبرة</div>
+          <div class="cred">👥 [X]+ عميل</div>
+          <div class="cred">🌍 أونلاين</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section id="offer">
+  <div class="container">
+    <div class="tag" style="text-align:center">العرض</div>
+    <h2 class="sec-h reveal" style="text-align:center">سعر مخصوص لأول [X] أشخاص</h2>
+    <p class="sec-sub reveal" style="text-align:center;margin:0 auto 28px">بعد ما تتملى الأماكن، السعر هيرجع للأصلي.</p>
+
+    <div class="offer-card reveal" id="offer-card">
+      <div class="offer-ribbon">⚡ سعر إطلاق</div>
+      <div class="offer-h">برنامج التحول 90 يوم</div>
+      <div class="offer-sub">كل حاجة محتاجها في مكان واحد</div>
+
+      <div class="price-old">السعر الأصلي: [X] جنيه</div>
+      <div class="price-main">[X] جنيه</div>
+      <div class="price-prd">دفعة واحدة / 90 يوم كاملة</div>
+
+      <ul class="offer-feats">
+        <li><div class="chk">✓</div> خطة تدريب مخصصة كاملة</li>
+        <li><div class="chk">✓</div> خطة تغذية حسب جسمك وروتينك</li>
+        <li><div class="chk">✓</div> واتساب مباشر مع المدرب</li>
+        <li><div class="chk">✓</div> متابعة أسبوعية وتعديل مستمر</li>
+        <li><div class="chk">✓</div> فيديوهات شرح التمارين</li>
+        <li><div class="chk">✓</div> ضمان استرداد المبلغ 100%</li>
+      </ul>
+
+      <!-- static spacer — hidden when smart-cta docks -->
+      <a href="https://wa.me/201XXXXXXXXX?text=أهلاً%2C+عايز+أعرف+عن+برنامج+الـ90+يوم"
+         class="cta-static" id="cta-anchor" target="_blank">
+        💬 تواصل معي على واتساب الآن
+      </a>
+
+      <!-- SMART CTA lives inside offer-card so absolute dock works perfectly -->
+      <a href="https://wa.me/201XXXXXXXXX?text=أهلاً%2C+عايز+أعرف+عن+برنامج+الـ90+يوم"
+         id="smart-cta" target="_blank">
+        💬 احجز مكانك على واتساب
+      </a>
+      <div class="cta-note">⚡ فيه [X] أماكن باقية بس — ما تأجلش</div>
+
+      <div class="cd-strip">
+        <span>⏰ العرض ينتهي خلال:</span>
+        <div class="cd-boxes">
+          <div class="cd-box" id="cd-h">00</div>
+          <div class="cd-sep">:</div>
+          <div class="cd-box" id="cd-m">00</div>
+          <div class="cd-sep">:</div>
+          <div class="cd-box" id="cd-s">00</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="tag">أسئلة شائعة</div>
+    <h2 class="sec-h reveal">عندك سؤال؟ الإجابة هنا</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">محتاج جيم عشان أشترك؟<div class="faq-arr">▾</div></button>
+        <div class="faq-a">لأ خالص. البرنامج يشتغل في البيت أو الجيم أو حتى في أوضة الفندق. بنبني خطتك حسب الأدوات اللي عندك.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">إزاي هيكون التواصل معاك؟<div class="faq-arr">▾</div></button>
+        <div class="faq-a">كل التواصل على واتساب. بعتلي تقريرك الأسبوعي وبرد عليك خلال 24 ساعة. وفيه جروب للمجموعة كمان.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">إيه ضمانك إن النتيجة هتحصل؟<div class="faq-arr">▾</div></button>
+        <div class="faq-a">لو اتبعت البرنامج 90 يوم كامل وما وصلتش للنتيجة المتفق عليها، هرجعلك فلوسك كاملة بدون أي شرط.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">أنا في بلد تاني — ينفع؟<div class="faq-arr">▾</div></button>
+        <div class="faq-a">أكيد. البرنامج أونلاين 100%. المكان مش عائق خالص.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">إزاي بيبدأ التسجيل؟<div class="faq-arr">▾</div></button>
+        <div class="faq-a">كلمني على واتساب، هنعمل استشارة مجانية 15 دقيقة نشوف هل البرنامج مناسب ليك، وبعدين نتفق ونبدأ خلال 48 ساعة.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">💪 [اسم المدرب]</div>
+  <p>برنامج التحول 90 يوم — تصميم: [اسمك]</p>
+</footer>
+
+<!-- smart-cta is inside #offer-card -->
+
+<script>
+/* ══════════════════════════════════════════
+   SCROLL PROGRESS
+══════════════════════════════════════════ */
+const pb = document.getElementById('progress-bar');
+
+/* ══════════════════════════════════════════
+   REVEAL ON SCROLL
+══════════════════════════════════════════ */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 65);
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* ══════════════════════════════════════════
+   SMART CTA — CLEAN TWO-STATE LOGIC
+   ─────────────────────────────────────────
+   PHASE 1: Before offer section → fixed floating pill
+   PHASE 2: Once offer section enters viewport → button
+            becomes absolute inside offer-card (permanently)
+            It stops following scroll — sits still in its place.
+   
+   Key insight: we use position:absolute inside offer-card.
+   The button is ALWAYS inside offer-card in the HTML.
+   We just switch it from fixed→absolute.
+══════════════════════════════════════════ */
+const smartCta   = document.getElementById('smart-cta');
+const anchor     = document.getElementById('cta-anchor');  // same-size spacer
+const offerSec   = document.getElementById('offer');
+
+let isDocked = false;
+let isVisible = false;
+let ticking  = false;
+
+function scrollProgress() {
+  const ratio = window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight);
+  pb.style.transform = `scaleX(${Math.min(ratio, 1)})`;
+}
+
+function dockCta() {
+  if (isDocked) return;
+  isDocked = true;
+
+  // Calculate top relative to offer-card (parent when position:absolute)
+  const cardRect   = document.getElementById('offer-card').getBoundingClientRect();
+  const anchorRect = anchor.getBoundingClientRect();
+  const topRelativeToCard = anchorRect.top - cardRect.top;
+
+  smartCta.style.top  = topRelativeToCard + 'px';
+  smartCta.style.bottom = 'auto';
+
+  smartCta.classList.remove('state-floating');
+  smartCta.classList.add('state-docked');
+
+  // Hide the spacer cleanly
+  anchor.classList.add('hidden-spacer');
+}
+
+function update() {
+  ticking = false;
+  scrollProgress();
+
+  const scrollY = window.scrollY;
+
+  // Show floating pill after 300px scroll
+  if (!isDocked) {
+    if (scrollY > 300 && !isVisible) {
+      isVisible = true;
+      smartCta.classList.add('state-floating');
+    } else if (scrollY <= 300 && isVisible) {
+      isVisible = false;
+      smartCta.classList.remove('state-floating');
+    }
+  }
+
+  // Dock once offer section top hits viewport
+  if (!isDocked) {
+    const offerTop = offerSec.getBoundingClientRect().top;
+    if (offerTop <= window.innerHeight * 0.85) {
+      dockCta();
+    }
+  }
+}
+
+window.addEventListener('scroll', () => {
+  if (!ticking) { ticking = true; requestAnimationFrame(update); }
+}, { passive: true });
+
+update();
+
+/* ══════════════════════════════════════════
+   FAQ ACCORDION
+══════════════════════════════════════════ */
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!open) item.classList.add('open');
+  });
+});
+
+/* ══════════════════════════════════════════
+   COUNTDOWN  24h from first visit
+══════════════════════════════════════════ */
+(function () {
+  const KEY = 'fit90_cd';
+  let end = +localStorage.getItem(KEY);
+  if (!end || end < Date.now()) {
+    end = Date.now() + 86400000;
+    localStorage.setItem(KEY, end);
+  }
+  const hEl = document.getElementById('cd-h');
+  const mEl = document.getElementById('cd-m');
+  const sEl = document.getElementById('cd-s');
+  function tick() {
+    const d = Math.max(0, end - Date.now());
+    hEl.textContent = String(Math.floor(d / 3600000)).padStart(2, '0');
+    mEl.textContent = String(Math.floor((d % 3600000) / 60000)).padStart(2, '0');
+    sEl.textContent = String(Math.floor((d % 60000) / 1000)).padStart(2, '0');
+    if (d > 0) setTimeout(tick, 1000);
+  }
+  tick();
+})();
+</script>
+</body>
+</html>

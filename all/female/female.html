@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>برنامج الرشاقة 90 يوم | [اسم المدربة]</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Noto+Kufi+Arabic:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #faf7f4;
+  --surface:  #ffffff;
+  --card:     #ffffff;
+  --border:   #ede8e3;
+  --rose:     #c97b6a;
+  --rose-lt:  #e8a898;
+  --rose-dim: rgba(201,123,106,0.12);
+  --plum:     #7a5c6e;
+  --plum-dim: rgba(122,92,110,0.1);
+  --dark:     #2a2025;
+  --muted:    #9a8990;
+  --green:    #5a9e7a;
+  --r:        14px;
+  --btn-h:    56px;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html { scroll-behavior:smooth; }
+body {
+  background:var(--bg); color:var(--dark);
+  font-family:'Almarai', sans-serif; font-size:16px;
+  line-height:1.75; overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+section { padding:56px 4% 60px; }
+.container { width:100%; max-width:920px; margin:0 auto; }
+a { color:inherit; }
+
+#progress-bar { position:fixed; top:0; right:0; left:0; height:3px; background:var(--rose); transform-origin:right; transform:scaleX(0); z-index:1001; transition:transform .1s linear; }
+
+/* NAV */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:13px 4%;
+  background:rgba(250,247,244,.95);
+  backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo { font-family:'Noto Kufi Arabic',sans-serif; font-weight:900; font-size:1.05rem; color:var(--rose); }
+.nav-cta { background:var(--rose); color:#fff; padding:8px 18px; border-radius:50px; font-weight:700; font-size:.82rem; text-decoration:none; transition:background .2s; }
+.nav-cta:active { background:var(--rose-lt); }
+
+/* HERO */
+#hero {
+  min-height:100svh; display:flex; flex-direction:column; justify-content:center;
+  padding-top:88px; padding-bottom:110px; position:relative; overflow:hidden;
+  background:linear-gradient(160deg, #fdf9f7 0%, #f5ede8 100%);
+}
+.hero-glow { position:absolute; width:500px; height:500px; pointer-events:none; background:radial-gradient(circle, rgba(201,123,106,.1) 0%, transparent 70%); right:-150px; top:10%; }
+.hero-glow2 { position:absolute; width:300px; height:300px; pointer-events:none; background:radial-gradient(circle, rgba(122,92,110,.07) 0%, transparent 70%); left:-80px; bottom:15%; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:var(--rose-dim); border:1px solid var(--rose); color:var(--rose); padding:6px 15px; border-radius:50px; font-size:.78rem; font-weight:700; margin-bottom:18px; opacity:0; animation:fadeUp .55s .2s forwards; width:fit-content; }
+.hero-badge span { width:7px; height:7px; border-radius:50%; background:var(--rose); animation:pulse 1.5s infinite; flex-shrink:0; }
+h1.hero-headline { font-family:'Noto Kufi Arabic',sans-serif; font-size:clamp(1.9rem,7.5vw,3.6rem); font-weight:900; line-height:1.25; margin-bottom:16px; color:var(--dark); opacity:0; animation:fadeUp .55s .38s forwards; }
+h1.hero-headline em { font-style:normal; color:var(--rose); position:relative; }
+h1.hero-headline em::after { content:''; position:absolute; bottom:1px; right:0; left:0; height:3px; background:var(--rose); border-radius:2px; opacity:.3; }
+.hero-sub { font-size:clamp(.9rem,3.5vw,1.05rem); color:var(--muted); margin-bottom:26px; max-width:540px; opacity:0; animation:fadeUp .55s .54s forwards; }
+.hero-btns { display:flex; flex-direction:column; gap:11px; opacity:0; animation:fadeUp .55s .7s forwards; }
+.btn-primary { background:var(--rose); color:#fff; height:var(--btn-h); padding:0 26px; border-radius:50px; font-weight:900; font-size:.98rem; text-decoration:none; display:flex; align-items:center; justify-content:center; gap:9px; box-shadow:0 8px 32px rgba(201,123,106,.3); transition:background .2s, transform .2s; }
+.btn-primary:active { background:var(--rose-lt); transform:scale(.98); }
+.btn-ghost { height:var(--btn-h); padding:0 22px; border-radius:50px; font-weight:600; font-size:.92rem; text-decoration:none; border:1.5px solid var(--border); color:var(--dark); display:flex; align-items:center; justify-content:center; gap:8px; transition:border-color .2s, color .2s; background:var(--surface); }
+.btn-ghost:active { border-color:var(--rose); color:var(--rose); }
+.hero-proof { margin-top:28px; display:flex; align-items:center; gap:13px; flex-wrap:wrap; opacity:0; animation:fadeUp .55s .88s forwards; }
+.avatars { display:flex; }
+.avatars span { width:32px; height:32px; border-radius:50%; background:var(--rose-dim); border:2px solid var(--bg); margin-right:-9px; display:flex; align-items:center; justify-content:center; font-size:.85rem; }
+.proof-txt { font-size:.82rem; color:var(--muted); }
+.proof-txt strong { color:var(--dark); }
+
+/* SHARED */
+.tag { font-size:.84rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--rose); margin-bottom:10px; display:block; }
+.sec-h { font-family:'Noto Kufi Arabic',sans-serif; font-size:clamp(1.75rem,6vw,2.6rem); font-weight:900; line-height:1.28; margin-bottom:12px; color:var(--dark); }
+.sec-sub { color:var(--muted); font-size:clamp(.88rem,2.8vw,.97rem); margin-bottom:32px; max-width:540px; }
+
+/* PAIN */
+#pain { background:var(--surface); }
+.pain-grid { display:grid; gap:10px; }
+.pain-card { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--r); padding:18px 16px; display:flex; gap:13px; align-items:flex-start; position:relative; overflow:hidden; transition:border-color .3s; }
+.pain-card::before { content:''; position:absolute; top:0; right:0; left:0; height:2px; background:var(--rose); opacity:0; transition:opacity .3s; }
+.pain-card:active::before { opacity:1; }
+.pain-icon { font-size:1.45rem; flex-shrink:0; margin-top:2px; }
+.pain-card h3 { font-size:.9rem; font-weight:700; margin-bottom:4px; line-height:1.4; color:var(--dark); }
+.pain-card p  { font-size:.82rem; color:var(--muted); line-height:1.6; }
+
+/* SOLUTION */
+#solution { background:var(--bg); }
+.sol-visual { background:linear-gradient(135deg, var(--rose-dim), var(--plum-dim)); border:1.5px solid var(--border); border-radius:18px; padding:26px 20px; text-align:center; position:relative; overflow:hidden; margin-top:28px; margin-bottom:8px; }
+.big-n { font-family:'Noto Kufi Arabic',sans-serif; font-size:5rem; font-weight:900; color:var(--rose); line-height:1; margin-bottom:4px; }
+.big-lbl { font-size:.95rem; color:var(--muted); }
+.stats-row { display:flex; gap:14px; margin-top:22px; justify-content:center; }
+.stat { text-align:center; }
+.stat-n { font-family:'Noto Kufi Arabic',sans-serif; font-size:1.4rem; font-weight:900; color:var(--dark); }
+.stat-l { font-size:.72rem; color:var(--muted); margin-top:2px; }
+.sol-list { list-style:none; display:flex; flex-direction:column; gap:9px; }
+.sol-item { display:flex; gap:13px; align-items:flex-start; padding:15px 14px; background:var(--surface); border:1.5px solid var(--border); border-radius:var(--r); transition:border-color .3s; }
+.sol-item:active { border-color:var(--rose); }
+.sol-num { width:32px; height:32px; min-width:32px; border-radius:50%; background:var(--rose-dim); border:1px solid var(--rose); color:var(--rose); font-weight:900; font-size:.78rem; display:flex; align-items:center; justify-content:center; }
+.sol-item h4 { font-size:.9rem; font-weight:700; margin-bottom:3px; color:var(--dark); }
+.sol-item p  { font-size:.82rem; color:var(--muted); line-height:1.55; }
+
+/* PROGRAM */
+#program { background:var(--surface); }
+.phases { display:grid; gap:10px; margin-bottom:26px; }
+.phase { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--r); padding:20px 16px; position:relative; overflow:hidden; }
+.phase-bg { font-family:'Noto Kufi Arabic',sans-serif; font-size:3.2rem; font-weight:900; color:var(--rose); opacity:.08; position:absolute; top:6px; left:10px; line-height:1; pointer-events:none; }
+.phase-tag { display:inline-block; background:var(--rose-dim); color:var(--rose); font-size:.7rem; font-weight:700; padding:3px 10px; border-radius:50px; margin-bottom:10px; }
+.phase h3 { font-size:.92rem; font-weight:900; margin-bottom:5px; color:var(--dark); }
+.phase p  { font-size:.82rem; color:var(--muted); }
+.includes { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+.inc-item { display:flex; align-items:center; gap:9px; padding:12px 13px; background:var(--bg); border:1.5px solid var(--border); border-radius:10px; }
+.inc-ico { width:30px; height:30px; min-width:30px; background:var(--rose-dim); border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:.85rem; }
+.inc-txt { font-size:.82rem; font-weight:600; color:var(--dark); }
+
+/* TESTIMONIALS */
+#testimonials { background:var(--bg); }
+.testi-note { background:var(--rose-dim); border:1px dashed rgba(201,123,106,.4); border-radius:10px; padding:14px 16px; margin-bottom:22px; font-size:.8rem; color:var(--rose); line-height:1.65; }
+.testi-note strong { display:block; margin-bottom:4px; font-size:.86rem; }
+.testis { display:flex; flex-direction:column; gap:11px; }
+.testi { background:var(--surface); border:1.5px solid var(--border); border-radius:var(--r); padding:20px 16px; position:relative; }
+.testi::before { content:'"'; position:absolute; top:10px; left:14px; font-size:3.5rem; color:var(--rose); opacity:.06; font-family:serif; line-height:1; pointer-events:none; }
+.stars  { color:var(--rose); font-size:.8rem; margin-bottom:9px; }
+.testi-txt  { font-size:.86rem; color:var(--dark); margin-bottom:14px; line-height:1.7; }
+.testi-auth { display:flex; align-items:center; gap:10px; }
+.testi-av   { width:38px; height:38px; border-radius:50%; background:var(--rose-dim); border:2px solid var(--rose); display:flex; align-items:center; justify-content:center; font-size:1rem; }
+.testi-name   { font-weight:700; font-size:.88rem; color:var(--dark); }
+.testi-result { font-size:.75rem; color:var(--green); font-weight:600; }
+
+/* TRAINER */
+#trainer { background:var(--surface); }
+.trainer-photo { width:100%; aspect-ratio:4/3; border-radius:15px; background:var(--rose-dim); border:2px solid var(--border); position:relative; overflow:hidden; margin-bottom:22px; }
+.trainer-photo img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; border-radius:13px; }
+.trainer-photo::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, transparent 55%, rgba(250,247,244,.55)); pointer-events:none; }
+.trainer-name  { font-family:'Noto Kufi Arabic',sans-serif; font-size:1.6rem; font-weight:900; margin-bottom:4px; color:var(--dark); }
+.trainer-title { color:var(--rose); font-size:.82rem; font-weight:600; margin-bottom:12px; }
+.trainer-bio   { color:var(--muted); font-size:.88rem; margin-bottom:18px; line-height:1.8; }
+.creds { display:flex; gap:7px; flex-wrap:wrap; }
+.cred  { background:var(--bg); border:1.5px solid var(--border); border-radius:7px; padding:6px 12px; font-size:.78rem; font-weight:600; color:var(--dark); }
+
+/* OFFER */
+#offer { background:var(--bg); position:relative; overflow:hidden; }
+#offer::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:560px; height:280px; background:radial-gradient(ellipse,rgba(201,123,106,.06),transparent 70%); pointer-events:none; }
+.offer-card { background:var(--surface); border:2px solid var(--rose); border-radius:18px; padding:52px 18px 26px; max-width:640px; margin:0 auto; text-align:center; position:relative; box-shadow:0 12px 60px rgba(201,123,106,.12); }
+.offer-ribbon { position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--rose); color:#fff; font-size:.72rem; font-weight:900; padding:5px 16px; border-radius:0 0 10px 10px; white-space:nowrap; }
+.offer-h   { font-family:'Noto Kufi Arabic',sans-serif; font-size:1.25rem; font-weight:900; margin-bottom:5px; color:var(--dark); }
+.offer-sub { color:var(--muted); font-size:.86rem; margin-bottom:22px; }
+.price-old  { color:var(--muted); text-decoration:line-through; font-size:.95rem; margin-bottom:3px; }
+.price-main { font-family:'Noto Kufi Arabic',sans-serif; font-size:clamp(2.4rem,9vw,3.6rem); font-weight:900; color:var(--rose); line-height:1; }
+.price-prd  { color:var(--muted); font-size:.8rem; margin-top:4px; margin-bottom:22px; }
+.offer-feats { list-style:none; text-align:right; display:flex; flex-direction:column; gap:9px; margin-bottom:26px; }
+.offer-feats li { display:flex; align-items:center; gap:9px; font-size:.86rem; color:var(--dark); }
+.chk { width:19px; height:19px; min-width:19px; border-radius:50%; background:rgba(90,158,122,.14); border:1px solid var(--green); display:flex; align-items:center; justify-content:center; font-size:.62rem; color:var(--green); }
+.cta-static { display:flex; align-items:center; justify-content:center; gap:9px; background:var(--rose); color:#fff; height:60px; border-radius:50px; font-weight:900; font-size:1rem; text-decoration:none; margin-bottom:13px; box-shadow:0 8px 36px rgba(201,123,106,.3); transition:background .2s; }
+.cta-static:active { background:var(--rose-lt); }
+.cta-static.hidden-spacer { visibility:hidden; pointer-events:none; }
+.cta-note { font-size:.78rem; color:var(--muted); }
+#smart-cta { position:fixed; bottom:18px; left:50%; transform:translateX(-50%) translateY(20px); width:calc(100% - 28px); max-width:400px; height:60px; background:var(--rose); color:#fff; border-radius:50px; font-family:'Almarai',sans-serif; font-weight:900; font-size:.96rem; text-decoration:none; display:flex; align-items:center; justify-content:center; gap:9px; box-shadow:0 8px 36px rgba(201,123,106,.45); z-index:300; opacity:0; pointer-events:none; transition:opacity .35s ease, transform .35s ease; white-space:nowrap; }
+#smart-cta:active { background:var(--rose-lt); }
+#smart-cta.state-floating { opacity:1; pointer-events:all; transform:translateX(-50%) translateY(0); }
+#smart-cta.state-docked   { position:absolute; left:0; width:100%; max-width:none; transform:none; opacity:1; pointer-events:all; box-shadow:0 0 45px rgba(201,123,106,.28); transition:none; z-index:10; }
+
+/* COUNTDOWN */
+.cd-strip { background:var(--rose-dim); border:1px solid rgba(201,123,106,.3); border-radius:10px; padding:11px 14px; margin-top:18px; display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:9px; font-size:.82rem; }
+.cd-boxes { display:flex; gap:5px; }
+.cd-box { background:var(--bg); border:1px solid rgba(201,123,106,.4); border-radius:7px; padding:5px 9px; min-width:40px; text-align:center; font-family:'Noto Kufi Arabic',sans-serif; font-size:1.2rem; font-weight:900; color:var(--rose); }
+.cd-sep { color:var(--rose); font-weight:900; align-self:center; }
+
+/* FAQ */
+#faq { background:var(--surface); }
+#faq .container { display:flex; flex-direction:column; align-items:center; }
+#faq .tag, #faq .sec-h { text-align:center; width:100%; }
+.faq-list { display:flex; flex-direction:column; gap:9px; width:100%; max-width:700px; }
+.faq-item { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--r); overflow:hidden; transition:border-color .3s; }
+.faq-item.open { border-color:var(--rose); }
+.faq-q { width:100%; background:none; border:none; color:var(--dark); font-family:'Almarai',sans-serif; font-size:.9rem; font-weight:700; text-align:right; padding:17px 18px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.faq-arr { width:25px; height:25px; min-width:25px; border-radius:50%; background:var(--rose-dim); border:1px solid var(--rose); color:var(--rose); display:flex; align-items:center; justify-content:center; font-size:.78rem; transition:transform .3s; }
+.faq-item.open .faq-arr { transform:rotate(180deg); }
+.faq-a { max-height:0; overflow:hidden; padding:0 18px; font-size:.85rem; color:var(--muted); line-height:1.7; transition:max-height .38s ease, padding .28s; }
+.faq-item.open .faq-a { max-height:220px; padding:0 18px 16px; }
+
+/* FOOTER */
+footer { background:var(--surface); border-top:1px solid var(--border); padding:32px 4% calc(36px + 48px); text-align:center; color:var(--muted); font-size:.8rem; }
+.footer-logo { font-family:'Noto Kufi Arabic',sans-serif; font-size:1.05rem; font-weight:900; color:var(--rose); margin-bottom:8px; }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity:0; transform:translateY(15px); } to { opacity:1; transform:translateY(0); } }
+@keyframes pulse  { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.45; transform:scale(.78); } }
+.reveal { opacity:0; transform:translateY(22px); transition:opacity .5s ease, transform .5s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+@media (min-width:580px) {
+  .hero-btns { flex-direction:row; }
+  .btn-primary, .btn-ghost { width:auto; }
+  .pain-grid { grid-template-columns:1fr 1fr; }
+  .testis { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .phases { grid-template-columns:repeat(3,1fr); }
+  .offer-card { padding:34px 30px; }
+  #smart-cta { max-width:440px; }
+}
+@media (min-width:900px) {
+  section { padding:76px 5% 80px; }
+  .btn-primary:hover { background:var(--rose-lt); transform:translateY(-2px); }
+  .btn-ghost:hover   { border-color:var(--rose); color:var(--rose); }
+  .sol-wrapper { display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; }
+  .sol-visual { margin-bottom:0; }
+  .trainer-wrap { display:grid; grid-template-columns:240px 1fr; gap:44px; align-items:start; }
+  .trainer-photo { aspect-ratio:3/4; margin-bottom:0; width:240px; }
+  .testis { grid-template-columns:repeat(3,1fr); }
+  .sol-item:hover  { border-color:var(--rose); }
+  .pain-card:hover { border-color:var(--rose-lt); }
+  .pain-card:hover::before { opacity:1; }
+  .testi:hover { border-color:var(--rose); }
+  .phase:hover { border-color:var(--rose); }
+  .cta-static:hover { background:var(--rose-lt); }
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<nav>
+  <div class="nav-logo">🌸 [اسم المدربة]</div>
+  <a href="#offer" class="nav-cta">ابدأي رحلتك</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="container">
+    <div class="hero-badge"><span></span> تدريب أونلاين للسيدات — من أي مكان</div>
+    <h1 class="hero-headline">
+      اكتشفي <em>ثقتك</em><br>في 90 يوم
+    </h1>
+    <p class="hero-sub">
+      مش بس رشاقة — إحساس حقيقي بنفسك. خطة مخصصة + متابعة يومية + دعم حقيقي طول الرحلة.
+    </p>
+    <div class="hero-btns">
+      <a href="#offer" class="btn-primary">🌸 ابدأي معانا دلوقتي</a>
+      <a href="#program" class="btn-ghost">✨ شوفي البرنامج</a>
+    </div>
+    <div class="hero-proof">
+      <div class="avatars"><span>👩</span><span>👩</span><span>👩</span><span>👩</span></div>
+      <div class="proof-txt"><strong>[X] ست</strong> بدأوا رحلتهم وغيّروا حياتهم</div>
+    </div>
+  </div>
+</section>
+
+<section id="pain">
+  <div class="container">
+    <div class="tag">إيه اللي بيوقفك؟</div>
+    <h2 class="sec-h reveal">حسيتي بده من قبل؟</h2>
+    <p class="sec-sub reveal">معظم السيدات بتحاول تتغير بس بتقع في نفس الفخ كل مرة.</p>
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <div class="pain-icon">⏰</div>
+        <div>
+          <h3>مش لاقية وقت بين الشغل والبيت</h3>
+          <p>البرنامج اتبنى أصلاً لحياتك مش العكس. 30 دقيقة يومياً كفاية.</p>
+        </div>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">😔</div>
+        <div>
+          <h3>جربتي كل حاجة وما نجحتيش</h3>
+          <p>المشكلة مش فيكِ — المشكلة في البرامج اللي مش مخصصة ليكِ.</p>
+        </div>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">🏋️</div>
+        <div>
+          <h3>مش مرتاحة في الجيم أو مش قادرة تروحي</h3>
+          <p>البرنامج كله في البيت. مريح، خاص، وعلى راحتك.</p>
+        </div>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">🥗</div>
+        <div>
+          <h3>الأكل الصحي مش ممكن مع حياتك العملية</h3>
+          <p>مش بنطلب منك تغيري حياتك — بنبني خطة تدخل في حياتك الموجودة.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="solution">
+  <div class="container">
+    <div class="sol-wrapper">
+      <div>
+        <div class="tag">طريقتي</div>
+        <h2 class="sec-h reveal">مش دايت — أسلوب حياة</h2>
+        <p class="sec-sub reveal">بنشتغل على جسمك وعقلك مع بعض. لأن التغيير الحقيقي بيبدأ من جوه.</p>
+        <ul class="sol-list">
+          <li class="sol-item reveal">
+            <div class="sol-num">١</div>
+            <div><h4>خطة مخصصة لجسمك وحياتك</h4><p>مش كوبي باستي. بنبني خطتك على ظروفك الحقيقية.</p></div>
+          </li>
+          <li class="sol-item reveal">
+            <div class="sol-num">٢</div>
+            <div><h4>متابعة يومية وأنتِ في بيتك</h4><p>مش لوحدك. أنا معاكِ كل خطوة على الواتساب.</p></div>
+          </li>
+          <li class="sol-item reveal">
+            <div class="sol-num">٣</div>
+            <div><h4>مجتمع بنات بيدعموا بعض</h4><p>جروب خاص من ستات بيمشوا نفس الرحلة — الطاقة دي بتغير كل حاجة.</p></div>
+          </li>
+          <li class="sol-item reveal">
+            <div class="sol-num">٤</div>
+            <div><h4>نتيجة حقيقية أو فلوسك ترجع</h4><p>واثقة من البرنامج لدرجة إني بضمن النتيجة.</p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="sol-visual reveal">
+        <div class="big-n">90</div>
+        <div class="big-lbl">يوم لتغيير حياتك</div>
+        <div class="stats-row">
+          <div class="stat"><div class="stat-n">[X]+</div><div class="stat-l">ست اتحولت</div></div>
+          <div class="stat"><div class="stat-n">[X]%</div><div class="stat-l">نسبة رضا</div></div>
+          <div class="stat"><div class="stat-n">[X] كجم</div><div class="stat-l">متوسط خسارة</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="program">
+  <div class="container">
+    <div class="tag">رحلتك</div>
+    <h2 class="sec-h reveal">3 مراحل — 90 يوم</h2>
+    <p class="sec-sub reveal">رحلة مدروسة خطوة بخطوة. مفيش قفز ومفيش ضغط.</p>
+    <div class="phases">
+      <div class="phase reveal">
+        <div class="phase-bg">١</div>
+        <div class="phase-tag">الشهر الأول</div>
+        <h3>مرحلة البداية</h3>
+        <p>بنتعرف على جسمك، بنبني عادات صغيرة، وبنكسر الحواجز النفسية.</p>
+      </div>
+      <div class="phase reveal">
+        <div class="phase-bg">٢</div>
+        <div class="phase-tag">الشهر الثاني</div>
+        <h3>مرحلة التغيير</h3>
+        <p>بدأتِ تحسي بفرق — بنضغط أكتر بس بأسلوب مناسب ليكِ.</p>
+      </div>
+      <div class="phase reveal">
+        <div class="phase-bg">٣</div>
+        <div class="phase-tag">الشهر الثالث</div>
+        <h3>مرحلة الثقة</h3>
+        <p>النتيجة ظهرت — دلوقتي بنتعلم إزاي نحافظ عليها للأبد.</p>
+      </div>
+    </div>
+    <div class="tag reveal" style="margin-bottom:14px">هتاخدي إيه</div>
+    <div class="includes">
+      <div class="inc-item reveal"><div class="inc-ico">🎯</div><div class="inc-txt">خطة تدريب مخصصة</div></div>
+      <div class="inc-item reveal"><div class="inc-ico">🥗</div><div class="inc-txt">خطة تغذية تناسب حياتك</div></div>
+      <div class="inc-item reveal"><div class="inc-ico">📱</div><div class="inc-txt">واتساب مباشر</div></div>
+      <div class="inc-item reveal"><div class="inc-ico">📊</div><div class="inc-txt">متابعة أسبوعية</div></div>
+      <div class="inc-item reveal"><div class="inc-ico">🎥</div><div class="inc-txt">فيديوهات شرح التمارين</div></div>
+      <div class="inc-item reveal"><div class="inc-ico">💕</div><div class="inc-txt">جروب دعم خاص</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="container">
+    <div class="tag">قصص نجاح</div>
+    <h2 class="sec-h reveal">ستات زيّكِ غيّروا حياتهم</h2>
+    <div class="testi-note reveal">
+      <strong>⚠️ تنبيه للمدربة — قبل رفع الصفحة</strong>
+      استبدلي الشهادات دي بكلام حقيقي من عميلاتك بالاسم والنتيجة الفعلية.
+    </div>
+    <div class="testis">
+      <div class="testi reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">[اكتبي هنا كلام عميلة حقيقية بنصه]</p>
+        <div class="testi-auth">
+          <div class="testi-av">👩</div>
+          <div><div class="testi-name">[اسم العميلة]</div><div class="testi-result">خسّرت [X] كيلو ✓</div></div>
+        </div>
+      </div>
+      <div class="testi reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">[اكتبي هنا كلام عميلة حقيقية بنصه]</p>
+        <div class="testi-auth">
+          <div class="testi-av">👩</div>
+          <div><div class="testi-name">[اسم العميلة]</div><div class="testi-result">خسّرت [X] كيلو ✓</div></div>
+        </div>
+      </div>
+      <div class="testi reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">[اكتبي هنا كلام عميلة حقيقية بنصه]</p>
+        <div class="testi-auth">
+          <div class="testi-av">👩</div>
+          <div><div class="testi-name">[اسم العميلة]</div><div class="testi-result">خسّرت [X] كيلو ✓</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="trainer">
+  <div class="container">
+    <div class="trainer-wrap">
+      <div class="trainer-photo">
+        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80" alt="صورة المدربة" loading="lazy">
+      </div>
+      <div>
+        <div class="tag">عن المدربة</div>
+        <div class="trainer-name reveal">[اسم المدربة]</div>
+        <div class="trainer-title reveal">مدربة لياقة ورشاقة أونلاين</div>
+        <p class="trainer-bio reveal">[اكتبي هنا قصتك — مين أنتِ، ليه بدأتِ، وإيه اللي بتقدميه مختلف. الناس بتشتري منك إنتِ مش بس من البرنامج.]</p>
+        <div class="creds reveal">
+          <div class="cred">🎓 [شهادتك]</div>
+          <div class="cred">📅 [X] سنين خبرة</div>
+          <div class="cred">👥 [X]+ عميلة</div>
+          <div class="cred">🌍 أونلاين</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="offer">
+  <div class="container">
+    <div class="tag" style="text-align:center">العرض</div>
+    <h2 class="sec-h reveal" style="text-align:center">ابدأي رحلتك بسعر خاص</h2>
+    <p class="sec-sub reveal" style="text-align:center;margin:0 auto 28px">الأماكن محدودة — عشان أقدر أتابع كل واحدة بشكل شخصي.</p>
+    <div class="offer-card reveal" id="offer-card">
+      <div class="offer-ribbon">🌸 عرض خاص</div>
+      <div class="offer-h">برنامج الرشاقة والثقة 90 يوم</div>
+      <div class="offer-sub">كل حاجة محتاجاها في مكان واحد</div>
+      <div class="price-old">السعر الأصلي: [X] جنيه</div>
+      <div class="price-main">[X] جنيه</div>
+      <div class="price-prd">دفعة واحدة / 90 يوم كاملة</div>
+      <ul class="offer-feats">
+        <li><div class="chk">✓</div> خطة تدريب مخصصة ليكِ</li>
+        <li><div class="chk">✓</div> خطة تغذية تناسب حياتك</li>
+        <li><div class="chk">✓</div> واتساب مباشر مع المدربة</li>
+        <li><div class="chk">✓</div> متابعة أسبوعية وتعديل مستمر</li>
+        <li><div class="chk">✓</div> جروب دعم خاص للسيدات</li>
+        <li><div class="chk">✓</div> ضمان استرداد المبلغ 100%</li>
+      </ul>
+      <a href="https://wa.me/[رقم_الواتساب]?text=أهلاً،%20عايزة%20أعرف%20عن%20برنامج%20الرشاقة%2090%20يوم"
+         class="cta-static" id="cta-anchor" target="_blank">
+        💬 تواصلي معايا على الواتساب
+      </a>
+      <a href="https://wa.me/[رقم_الواتساب]?text=أهلاً،%20عايزة%20أعرف%20عن%20برنامج%20الرشاقة%2090%20يوم"
+         id="smart-cta" target="_blank">
+        💬 احجزي مكانك دلوقتي
+      </a>
+      <div class="cta-note">🌸 فيه [X] أماكن باقية بس</div>
+      <div class="cd-strip">
+        <span>⏰ العرض ينتهي خلال:</span>
+        <div class="cd-boxes">
+          <div class="cd-box" id="cd-h">00</div><div class="cd-sep">:</div>
+          <div class="cd-box" id="cd-m">00</div><div class="cd-sep">:</div>
+          <div class="cd-box" id="cd-s">00</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <div class="tag">أسئلة شائعة</div>
+    <h2 class="sec-h reveal">عندك سؤال؟ أنا هنا</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">محتاجة جيم عشان أشترك؟<div class="faq-arr">▾</div></button>
+        <div class="faq-a">لأ خالص. كل التمارين في البيت. بنعمل خطتك حسب الأدوات اللي عندك حتى لو مفيش حاجة خالص.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">أنا مشغولة جداً — البرنامج هيناسبني؟<div class="faq-arr">▾</div></button>
+        <div class="faq-a">البرنامج اتصمم أصلاً للست المشغولة. 30 دقيقة يومياً كافية، والجدول بيتبني حسب وقتك.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">إيه ضمانك إن النتيجة هتحصل؟<div class="faq-arr">▾</div></button>
+        <div class="faq-a">لو اتبعتي البرنامج 90 يوم كامل ومحققتيش النتيجة المتفق عليها — هرجعلك فلوسك كاملة بدون أي شرط.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">هل البرنامج مناسب بعد الولادة؟<div class="faq-arr">▾</div></button>
+        <div class="faq-a">أيوه، بس محتاجة تاخدي موافقة دكتورك الأول. بعدين بنبني خطة مناسبة لمرحلتك تماماً.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">إزاي بيبدأ التسجيل؟<div class="faq-arr">▾</div></button>
+        <div class="faq-a">كلميني على الواتساب، هنعمل استشارة مجانية 15 دقيقة نشوف البرنامج مناسب ليكِ إزاي، وبعدين نبدأ.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">🌸 [اسم المدربة]</div>
+  <p>برنامج الرشاقة والثقة 90 يوم — تصميم: <a href="[رابطك]" target="_blank" rel="noopener">[اسمك]</a></p>
+</footer>
+
+<script>
+const pb = document.getElementById('progress-bar');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 65); revealObs.unobserve(e.target); }
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+const smartCta = document.getElementById('smart-cta');
+const anchor   = document.getElementById('cta-anchor');
+const offerSec = document.getElementById('offer');
+let isDocked = false, isVisible = false, ticking = false;
+
+function scrollProgress() { const r = window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight); pb.style.transform = `scaleX(${Math.min(r,1)})`; }
+function dockCta() {
+  if (isDocked) return; isDocked = true;
+  const cardRect = document.getElementById('offer-card').getBoundingClientRect();
+  const anchorRect = anchor.getBoundingClientRect();
+  smartCta.style.top = (anchorRect.top - cardRect.top) + 'px';
+  smartCta.style.bottom = 'auto';
+  smartCta.classList.remove('state-floating');
+  smartCta.classList.add('state-docked');
+  anchor.classList.add('hidden-spacer');
+}
+function update() {
+  ticking = false; scrollProgress();
+  const scrollY = window.scrollY;
+  if (!isDocked) {
+    if (scrollY > 300 && !isVisible) { isVisible = true; smartCta.classList.add('state-floating'); }
+    else if (scrollY <= 300 && isVisible) { isVisible = false; smartCta.classList.remove('state-floating'); }
+    if (offerSec.getBoundingClientRect().top <= window.innerHeight * 0.85) dockCta();
+  }
+}
+window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+update();
+
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!open) item.classList.add('open');
+  });
+});
+
+(function () {
+  const KEY = 'fit90_cd_f';
+  let end = +localStorage.getItem(KEY);
+  if (!end || end < Date.now()) { end = Date.now() + 86400000; localStorage.setItem(KEY, end); }
+  const hEl = document.getElementById('cd-h'), mEl = document.getElementById('cd-m'), sEl = document.getElementById('cd-s');
+  function tick() {
+    const d = Math.max(0, end - Date.now());
+    hEl.textContent = String(Math.floor(d / 3600000)).padStart(2,'0');
+    mEl.textContent = String(Math.floor((d % 3600000) / 60000)).padStart(2,'0');
+    sEl.textContent = String(Math.floor((d % 60000) / 1000)).padStart(2,'0');
+    if (d > 0) setTimeout(tick, 1000);
+  }
+  tick();
+})();
+</script>
+</body>
+</html>

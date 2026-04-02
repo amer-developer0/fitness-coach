@@ -1,0 +1,17 @@
+font_awesome_styles = {
+    "arab-dark_v7.html":    "fa-solid",
+    "egypt-dark_v5.html":   "fa-solid",
+    "arab-female_v1.html":  "fa-regular",
+    "egypt-female_v1.html": "fa-regular",
+    "medical_v1.html":      "fa-solid",
+    "premium_v1.html":      "fa-regular",  # fa-light غير متاح في free
+}
+
+
+
+1. EGYPT DARK ==
+2. Arab dark ==
+3. Egypt female --
+4. Arab female
+5. Premium 
+6. Medical
