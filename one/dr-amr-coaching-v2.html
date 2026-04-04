@@ -1,0 +1,1931 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>د. عمرو — كوتش التغذية الطبية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy:     #0d1b2e;
+  --navy2:    #132338;
+  --teal:     #0e7d7a;
+  --teal-l:   #12a09c;
+  --teal-dim: #0a5a58;
+  --gold:     #c49a3c;
+  --gold-l:   #e0b84a;
+  --white:    #ffffff;
+  --off:      #f5f7f9;
+  --line:     #e2e8ed;
+  --muted:    #8898a8;
+  --text:     #1a2532;
+  --mid:      #4a5a6a;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--text);
+  font-family: 'Tajawal', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ========== NAV ========== */
+nav {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 200;
+  padding: 1rem 6vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+nav.solid {
+  background: rgba(13,27,46,0.97);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.nav-seal {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--teal), var(--teal-l));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+.nav-name {
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--white);
+  line-height: 1.1;
+}
+.nav-name small {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 400;
+  color: var(--teal-l);
+  letter-spacing: 0.08em;
+}
+.nav-btn {
+  background: var(--teal);
+  color: #fff;
+  font-family: 'Tajawal', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.55rem 1.4rem;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.nav-btn:hover { background: var(--teal-l); transform: translateY(-1px); }
+
+/* ========== HERO ========== */
+.hero {
+  min-height: 100vh;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 8rem 6vw 5rem;
+}
+
+/* medical cross / grid watermark */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(14,125,122,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14,125,122,0.07) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-bg::after {
+  content: '+';
+  position: absolute;
+  left: 55%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(220px, 36vw, 480px);
+  font-weight: 900;
+  color: rgba(14,125,122,0.05);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  font-family: 'DM Serif Display', serif;
+}
+
+.hero-glow {
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(14,125,122,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 5rem;
+  align-items: center;
+  width: 100%;
+}
+
+@media(max-width:860px){
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+}
+
+/* credential badge */
+.cred-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(14,125,122,0.12);
+  border: 1px solid rgba(14,125,122,0.3);
+  padding: 0.45rem 1.1rem;
+  border-radius: 100px;
+  margin-bottom: 1.8rem;
+  animation: fadeUp 0.7s ease both;
+}
+.cred-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--teal-l);
+  animation: blink 2.4s infinite;
+}
+@keyframes blink {
+  0%,100%{ opacity:1; } 50%{ opacity:0.3; }
+}
+.cred-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal-l);
+}
+
+.hero-h1 {
+  font-family: 'Tajawal', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+  line-height: 1.15;
+  color: var(--white);
+  margin-bottom: 1.3rem;
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+.hero-h1 .teal { color: var(--teal-l); }
+.hero-h1 .gold { color: var(--gold-l); }
+
+.hero-sub {
+  font-size: clamp(1rem, 1.8vw, 1.12rem);
+  color: rgba(255,255,255,0.55);
+  line-height: 1.9;
+  max-width: 500px;
+  margin-bottom: 2.5rem;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+.hero-sub strong { color: rgba(255,255,255,0.85); }
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-bottom: 3rem;
+  animation: fadeUp 0.7s 0.3s ease both;
+}
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--teal);
+  color: #fff;
+  font-family: 'Tajawal', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 0.9rem 2rem;
+  border-radius: 100px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(14,125,122,0.35);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.btn-hero:hover {
+  background: var(--teal-l);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(14,125,122,0.45);
+}
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  font-family: 'Tajawal', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 100px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-outline:hover {
+  color: #fff;
+  border-color: rgba(255,255,255,0.35);
+}
+
+/* credentials row */
+.creds-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  animation: fadeUp 0.7s 0.4s ease both;
+}
+.cred-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.55);
+  font-weight: 600;
+}
+.cred-pill span { color: var(--gold-l); font-size: 0.9rem; }
+
+/* ========== HERO VISUAL ========== */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+
+.doc-card {
+  width: 300px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.doc-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; left: 0;
+  height: 3px;
+  border-radius: 24px 24px 0 0;
+  background: linear-gradient(90deg, var(--teal), var(--gold));
+}
+
+.doc-avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--teal-dim) 0%, var(--teal-l) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto 1rem;
+  border: 3px solid rgba(255,255,255,0.08);
+}
+
+.doc-name {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--white);
+  margin-bottom: 0.2rem;
+}
+
+.doc-title {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--teal-l);
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.doc-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+.d-stat {
+  background: rgba(255,255,255,0.04);
+  border-radius: 12px;
+  padding: 0.8rem;
+  text-align: center;
+}
+.d-stat .n {
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--gold-l);
+  line-height: 1;
+}
+.d-stat .l {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 0.2rem;
+}
+
+.doc-offer-badge {
+  background: rgba(14,125,122,0.15);
+  border: 1px solid rgba(14,125,122,0.3);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.doc-offer-badge .label {
+  font-size: 0.72rem;
+  color: var(--teal-l);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.doc-offer-badge .price {
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: var(--white);
+}
+.doc-offer-badge .original {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.35);
+  text-decoration: line-through;
+}
+
+/* floating cards */
+.fl {
+  position: absolute;
+  background: rgba(13,27,46,0.9);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  backdrop-filter: blur(8px);
+  white-space: nowrap;
+}
+.fl.a { top: 20px; left: -60px; animation: floatY 3s ease-in-out infinite; }
+.fl.b { bottom: 40px; left: -55px; animation: floatY 3s 1s ease-in-out infinite; }
+.fl.c { bottom: 80px; right: -55px; animation: floatY 3s 0.5s ease-in-out infinite; }
+
+@keyframes floatY {
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-7px); }
+}
+.fl-icon {
+  width: 28px; height: 28px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+}
+.fl-icon.t { background: rgba(14,125,122,0.2); }
+.fl-icon.g { background: rgba(196,154,60,0.2); }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ========== AUTHORITY STRIP ========== */
+.authority-strip {
+  background: linear-gradient(135deg, var(--teal-dim) 0%, var(--teal) 100%);
+  padding: 1.5rem 6vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+}
+.auth-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.auth-item .ic {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+/* ========== SECTIONS ========== */
+section { padding: 5.5rem 6vw; }
+
+.s-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 0.8rem;
+}
+
+.s-h2 {
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.2;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+
+.s-body {
+  font-size: 1.02rem;
+  color: var(--mid);
+  max-width: 580px;
+  line-height: 1.9;
+}
+
+/* ========== WHY MEDICAL ========== */
+.medical-why {
+  background: var(--off);
+  position: relative;
+  overflow: hidden;
+}
+
+.medical-why::before {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -80px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(14,125,122,0.06) 0%, transparent 70%);
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+  margin-top: 3rem;
+}
+
+.why-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 1.8rem;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.25s, transform 0.2s;
+}
+.why-card:hover {
+  box-shadow: 0 10px 36px rgba(0,0,0,0.07);
+  transform: translateY(-3px);
+}
+.why-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal), var(--teal-l));
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.why-card:hover::before { opacity: 1; }
+
+.why-ic {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  background: rgba(14,125,122,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 1.1rem;
+}
+
+.why-card h3 {
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+.why-card p {
+  font-size: 0.87rem;
+  color: var(--mid);
+  line-height: 1.72;
+}
+
+/* ========== WHAT'S INCLUDED ========== */
+.includes {
+  background: var(--white);
+}
+
+.inc-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+@media(max-width:720px){ .inc-layout { grid-template-columns: 1fr; } }
+
+.inc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.inc-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.inc-item:hover {
+  border-color: var(--teal);
+  box-shadow: 0 4px 16px rgba(14,125,122,0.08);
+}
+
+.inc-icon {
+  width: 40px; height: 40px;
+  flex-shrink: 0;
+  border-radius: 11px;
+  background: rgba(14,125,122,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.inc-item h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 0.25rem;
+}
+.inc-item p {
+  font-size: 0.83rem;
+  color: var(--mid);
+  line-height: 1.65;
+}
+
+/* right side highlight box */
+.inc-highlight {
+  background: var(--navy);
+  border-radius: 24px;
+  padding: 2.5rem;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+.inc-highlight::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(14,125,122,0.15);
+}
+
+.inc-hl-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.6rem;
+  line-height: 1.3;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+.inc-hl-title .t { color: var(--teal-l); }
+
+.inc-hl-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2rem;
+}
+.inc-hl-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.5;
+}
+.inc-hl-points li::before {
+  content: '✓';
+  color: var(--teal-l);
+  font-weight: 900;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+
+.inc-hl-price {
+  position: relative;
+  z-index: 1;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 1.2rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.inc-hl-price .was {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.35);
+  text-decoration: line-through;
+  font-weight: 600;
+}
+.inc-hl-price .now-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--teal-l);
+  font-weight: 700;
+}
+.inc-hl-price .now {
+  font-weight: 900;
+  font-size: 2.2rem;
+  color: var(--white);
+  line-height: 1;
+}
+.inc-hl-price .cur {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.45);
+  font-weight: 600;
+}
+.discount-tag {
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 0.72rem;
+  font-weight: 900;
+  padding: 0.3rem 0.7rem;
+  border-radius: 100px;
+  letter-spacing: 0.05em;
+}
+
+/* ========== TESTIMONIALS ========== */
+.testi {
+  background: var(--off);
+}
+
+.t-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+  margin-top: 3rem;
+}
+
+.t-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 1.8rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.t-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.07);
+}
+
+.t-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
+
+.t-quote {
+  font-size: 0.93rem;
+  color: var(--mid);
+  line-height: 1.85;
+  margin-bottom: 1.3rem;
+  font-style: italic;
+}
+.t-quote strong { color: var(--navy); font-style: normal; }
+
+.t-author { display:flex; align-items:center; gap:0.8rem; }
+.t-av {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+}
+.t-av.n { background: var(--navy); }
+.t-av.t { background: var(--teal); }
+.t-av.g { background: #7a5a2e; }
+.t-name { font-weight: 700; font-size: 0.9rem; color: var(--navy); }
+.t-meta { font-size: 0.75rem; color: var(--muted); }
+
+/* ========== OFFER / PRICING ========== */
+.offer-sec {
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+.offer-sec::before {
+  content:'';
+  position:absolute;
+  top:-200px; right:-200px;
+  width:500px; height:500px;
+  border-radius:50%;
+  background: radial-gradient(circle, rgba(14,125,122,0.12) 0%, transparent 65%);
+  pointer-events:none;
+}
+.offer-sec::after {
+  content:'50%';
+  position:absolute;
+  left:6vw; bottom:-20px;
+  font-size: clamp(120px, 25vw, 280px);
+  font-weight:900;
+  color:rgba(255,255,255,0.02);
+  font-family:'DM Serif Display', serif;
+  line-height:1;
+  user-select:none;
+  pointer-events:none;
+}
+
+.offer-sec .s-eyebrow { color: var(--teal-l); }
+.offer-sec .s-h2 { color: var(--white); }
+.offer-sec .s-body { color: rgba(255,255,255,0.45); }
+
+.offer-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  max-width: 600px;
+  margin-top: 3rem;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+.offer-card::before {
+  content:'';
+  position:absolute;
+  top:0; right:0; left:0;
+  height:3px;
+  background: linear-gradient(90deg, var(--teal), var(--gold-l));
+}
+
+.oc-top {
+  padding: 2rem 2rem 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.oc-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 0.5rem;
+}
+
+.oc-price-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+}
+.oc-now {
+  font-family: 'DM Serif Display', serif;
+  font-size: 3.2rem;
+  color: var(--white);
+  line-height: 1;
+}
+.oc-cur {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.45);
+  font-weight: 700;
+}
+.oc-was {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.oc-was .was-price {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.25);
+  text-decoration: line-through;
+  font-weight: 700;
+}
+.oc-badge {
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 0.72rem;
+  font-weight: 900;
+  padding: 0.28rem 0.7rem;
+  border-radius: 100px;
+  letter-spacing: 0.05em;
+}
+
+.oc-duration {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.4);
+  font-weight: 600;
+}
+.oc-duration::before {
+  content:'📅';
+  font-size:0.9rem;
+}
+
+.oc-features {
+  padding: 1.8rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+@media(max-width:500px){ .oc-features { grid-template-columns: 1fr; } }
+
+.oc-feat {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.87rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.5;
+}
+.oc-feat::before {
+  content:'✓';
+  color: var(--teal-l);
+  font-weight:900;
+  flex-shrink:0;
+  margin-top:0.05rem;
+}
+
+.oc-cta {
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.wa-main {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  background: #25D366;
+  color: #fff;
+  font-family: 'Tajawal', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 100px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+.wa-main:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(37,211,102,0.4);
+}
+.oc-note {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.3);
+  line-height: 1.5;
+}
+
+/* ========== FAQ ========== */
+.faq-s {
+  background: var(--off);
+}
+.faq-list {
+  margin-top: 3rem;
+  max-width: 660px;
+  display: flex;
+  flex-direction: column;
+}
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1.3rem 0;
+  text-align: right;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: var(--navy);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.faq-btn .ico {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s, transform 0.25s;
+}
+.faq-btn.open .ico {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #fff;
+  transform: rotate(45deg);
+}
+.faq-ans {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.25s;
+  font-size: 0.93rem;
+  color: var(--mid);
+  line-height: 1.85;
+}
+.faq-ans.open {
+  max-height: 300px;
+  padding-bottom: 1.3rem;
+}
+
+/* ========== FINAL CTA ========== */
+.final {
+  background: var(--white);
+  text-align: center;
+  padding: 7rem 6vw;
+  position: relative;
+  overflow: hidden;
+}
+.final::before {
+  content: '';
+  position: absolute;
+  top: -150px; left: 50%;
+  transform: translateX(-50%);
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(14,125,122,0.05) 0%, transparent 65%);
+  pointer-events: none;
+}
+.final .s-h2 {
+  max-width: 600px;
+  margin: 0 auto 1rem;
+  position: relative;
+  z-index: 1;
+}
+.final .s-body {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+.final-btns {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+.wa-final {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: #25D366;
+  color: #fff;
+  font-family: 'Tajawal', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  padding: 1rem 2.6rem;
+  border-radius: 100px;
+  text-decoration: none;
+  box-shadow: 0 8px 28px rgba(37,211,102,0.3);
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+.wa-final:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(37,211,102,0.4);
+}
+.final-note {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background: var(--navy);
+  padding: 1.5rem 6vw;
+  text-align: center;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.06em;
+}
+
+/* ========== REVEAL ========== */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.vis { opacity:1; transform:translateY(0); }
+
+/* ========== URGENCY TIMER ========== */
+.urgency-bar {
+  background: linear-gradient(135deg, #7c1a1a 0%, #a32020 50%, #7c1a1a 100%);
+  padding: 0.7rem 6vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 100;
+}
+.urgency-text {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.05em;
+}
+.timer-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.timer-block {
+  background: rgba(0,0,0,0.3);
+  border-radius: 6px;
+  padding: 0.25rem 0.55rem;
+  text-align: center;
+  min-width: 38px;
+}
+.timer-num {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  font-family: 'DM Serif Display', serif;
+}
+.timer-lbl {
+  font-size: 0.55rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.1rem;
+}
+.timer-sep { color: rgba(255,255,255,0.4); font-weight: 900; font-size: 1rem; }
+.urgency-tag {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 0.73rem;
+  font-weight: 800;
+  padding: 0.22rem 0.7rem;
+  border-radius: 100px;
+  letter-spacing: 0.08em;
+  animation: pulse-tag 1.8s ease-in-out infinite;
+}
+@keyframes pulse-tag {
+  0%,100% { opacity:1; } 50% { opacity:0.65; }
+}
+
+/* ========== STATS TICKER ========== */
+.stats-ticker {
+  background: var(--navy2);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  overflow: hidden;
+  padding: 1rem 0;
+}
+.ticker-inner {
+  display: flex;
+  gap: 4rem;
+  animation: ticker 22s linear infinite;
+  width: max-content;
+}
+.ticker-inner:hover { animation-play-state: paused; }
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.tick-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.tick-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem;
+  color: var(--gold-l);
+  line-height: 1;
+}
+.tick-label {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.45);
+  font-weight: 600;
+  line-height: 1.3;
+}
+.tick-sep {
+  width: 1px;
+  height: 28px;
+  background: rgba(255,255,255,0.08);
+  margin: 0 1rem;
+}
+
+/* ========== RESULTS SECTION ========== */
+.results-sec {
+  background: var(--white);
+  padding: 5.5rem 6vw;
+}
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+  margin-top: 3rem;
+}
+.result-card {
+  background: var(--off);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.result-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.07);
+}
+.result-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal), var(--teal-l));
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.result-card:hover::after { opacity: 1; }
+.result-emoji { font-size: 2rem; margin-bottom: 0.8rem; }
+.result-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.4rem;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.result-num span { color: var(--teal); }
+.result-desc {
+  font-size: 0.82rem;
+  color: var(--mid);
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+/* ========== GUARANTEE BADGE ========== */
+.guarantee-strip {
+  background: linear-gradient(135deg, rgba(14,125,122,0.06) 0%, rgba(196,154,60,0.06) 100%);
+  border: 1px solid rgba(14,125,122,0.15);
+  border-radius: 20px;
+  padding: 2rem 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 680px;
+  margin: 3rem auto 0;
+  flex-wrap: wrap;
+}
+.guarantee-icon {
+  font-size: 2.8rem;
+  flex-shrink: 0;
+}
+.guarantee-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 0.3rem;
+}
+.guarantee-text {
+  font-size: 0.85rem;
+  color: var(--mid);
+  line-height: 1.7;
+}
+
+/* ========== STICKY CTA ========== */
+.sticky-cta {
+  position: fixed;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  z-index: 300;
+  transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  pointer-events: none;
+}
+.sticky-cta.show {
+  transform: translateX(-50%) translateY(0);
+  pointer-events: all;
+}
+.sticky-inner {
+  background: var(--navy);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 100px;
+  padding: 0.75rem 1.2rem 0.75rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.35);
+  backdrop-filter: blur(10px);
+}
+.sticky-price {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.sticky-price .sp-now {
+  font-weight: 900;
+  font-size: 1rem;
+  color: var(--white);
+}
+.sticky-price .sp-was {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.35);
+  text-decoration: line-through;
+}
+.sticky-btn {
+  background: #25D366;
+  color: #fff;
+  font-family: 'Tajawal', sans-serif;
+  font-weight: 800;
+  font-size: 0.88rem;
+  padding: 0.6rem 1.3rem;
+  border-radius: 100px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  box-shadow: 0 3px 12px rgba(37,211,102,0.3);
+  transition: transform 0.15s;
+}
+.sticky-btn:hover { transform: scale(1.03); }
+
+/* ========== SPOTS LEFT ========== */
+.spots-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(196,154,60,0.1);
+  border: 1px solid rgba(196,154,60,0.25);
+  padding: 0.45rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+}
+.spots-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--gold-l);
+  animation: blink 1.5s infinite;
+}
+.spots-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gold-l);
+  letter-spacing: 0.1em;
+}
+</style>
+</head>
+<body>
+
+<!-- URGENCY BAR -->
+<div class="urgency-bar">
+  <span class="urgency-text">⚡ عرض الخصم ٥٠٪ ينتهي في</span>
+  <div class="timer-wrap">
+    <div class="timer-block">
+      <div class="timer-num" id="t-h">23</div>
+      <div class="timer-lbl">ساعة</div>
+    </div>
+    <div class="timer-sep">:</div>
+    <div class="timer-block">
+      <div class="timer-num" id="t-m">47</div>
+      <div class="timer-lbl">دقيقة</div>
+    </div>
+    <div class="timer-sep">:</div>
+    <div class="timer-block">
+      <div class="timer-num" id="t-s">12</div>
+      <div class="timer-lbl">ثانية</div>
+    </div>
+  </div>
+  <span class="urgency-tag">باقي ٥ أماكن فقط</span>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-brand">
+    <div class="nav-seal">⚕️</div>
+    <div class="nav-name">
+      د. عمرو
+      <small>طبيب بشري · أخصائي تغذية</small>
+    </div>
+  </div>
+  <a href="#offer" class="nav-btn">احجز مكانك ←</a>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-inner">
+    <!-- LEFT -->
+    <div class="hero-left">
+      <div class="cred-badge">
+        <div class="cred-dot"></div>
+        <span class="cred-text">طبيب بشري + أخصائي تغذية</span>
+      </div>
+
+      <h1 class="hero-h1">
+        تحول جسمك<br>
+        بإشراف <span class="teal">طبي حقيقي</span><br>
+        <span class="gold">مش رأي على السوشيال</span>
+      </h1>
+
+      <p class="hero-sub">
+        مش كوتش عادي — <strong>طبيب بشري وأخصائي تغذية</strong>
+        بيتابعك يومياً على واتساب، بيعملك خطة أكل وتمرين مشروحة بالفيديو،
+        ويضمنك نتيجة حقيقية في ٣ شهور.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#offer" class="btn-hero">
+          احجز مكانك بـ 1000 جنيه
+        </a>
+        <a href="#includes" class="btn-outline">
+          إيه اللي هاخده؟ ↓
+        </a>
+      </div>
+
+      <div class="creds-row">
+        <div class="cred-pill"><span>🩺</span> طبيب بشري معتمد</div>
+        <div class="cred-pill"><span>🥗</span> أخصائي تغذية</div>
+        <div class="cred-pill"><span>💬</span> متابعة يومية</div>
+        <div class="cred-pill"><span>🎥</span> فيديوهات شرح</div>
+      </div>
+    </div>
+
+    <!-- RIGHT: VISUAL CARD -->
+    <div class="hero-visual">
+      <div class="doc-card">
+        <div class="doc-avatar">👨‍⚕️</div>
+        <div class="doc-name">د. عمرو</div>
+        <div class="doc-title">MEDICAL COACH · طب بشري · تغذية</div>
+        <div class="doc-stats">
+          <div class="d-stat">
+            <div class="n">3</div>
+            <div class="l">شهور</div>
+          </div>
+          <div class="d-stat">
+            <div class="n">يومي</div>
+            <div class="l">متابعة</div>
+          </div>
+          <div class="d-stat">
+            <div class="n">🎥</div>
+            <div class="l">فيديوهات</div>
+          </div>
+          <div class="d-stat">
+            <div class="n">50%</div>
+            <div class="l">خصم</div>
+          </div>
+        </div>
+        <div class="doc-offer-badge">
+          <div>
+            <div class="label">السعر الحالي</div>
+            <div class="original">2,000 جنيه</div>
+          </div>
+          <div class="price">1,000 جنيه</div>
+        </div>
+      </div>
+
+      <div class="fl a">
+        <div class="fl-icon t">🩺</div>
+        إشراف طبي حقيقي
+      </div>
+      <div class="fl b">
+        <div class="fl-icon g">🎥</div>
+        كل حاجة بالفيديو
+      </div>
+      <div class="fl c">
+        <div class="fl-icon t">💬</div>
+        واتساب يومي
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHORITY STRIP -->
+<div class="authority-strip">
+  <div class="auth-item">
+    <div class="ic">🩺</div>
+    طبيب بشري مرخص
+  </div>
+  <div class="auth-item">
+    <div class="ic">🥗</div>
+    أخصائي تغذية معتمد
+  </div>
+  <div class="auth-item">
+    <div class="ic">💊</div>
+    خطط غذائية طبية دقيقة
+  </div>
+  <div class="auth-item">
+    <div class="ic">📱</div>
+    متابعة يومية واتساب
+  </div>
+</div>
+
+<!-- STATS TICKER -->
+<div class="stats-ticker">
+  <div class="ticker-inner" id="ticker">
+    <div class="tick-item">
+      <div class="tick-num">+200</div>
+      <div class="tick-label">متدرب<br>استفاد</div>
+    </div>
+    <div class="tick-sep"></div>
+    <div class="tick-item">
+      <div class="tick-num">-14kg</div>
+      <div class="tick-label">متوسط<br>الخسارة</div>
+    </div>
+    <div class="tick-sep"></div>
+    <div class="tick-item">
+      <div class="tick-num">3</div>
+      <div class="tick-label">شهور<br>متابعة</div>
+    </div>
+    <div class="tick-sep"></div>
+    <div class="tick-item">
+      <div class="tick-num">100%</div>
+      <div class="tick-label">فيديوهات<br>شرح</div>
+    </div>
+    <div class="tick-sep"></div>
+    <div class="tick-item">
+      <div class="tick-num">يومي</div>
+      <div class="tick-label">رد<br>واتساب</div>
+    </div>
+    <div class="tick-sep"></div>
+    <div class="tick-item">
+      <div class="tick-num">50%</div>
+      <div class="tick-label">خصم<br>حالي</div>
+    </div>
+    <div class="tick-sep"></div>
+    <!-- Duplicate for infinite loop -->
+    <div class="tick-item">
+      <div class="tick-num">+200</div>
+      <div class="tick-label">متدرب<br>استفاد</div>
+    </div>
+    <div class="tick-sep"></div>
+    <div class="tick-item">
+      <div class="tick-num">-14kg</div>
+      <div class="tick-label">متوسط<br>الخسارة</div>
+    </div>
+    <div class="tick-sep"></div>
+    <div class="tick-item">
+      <div class="tick-num">3</div>
+      <div class="tick-label">شهور<br>متابعة</div>
+    </div>
+    <div class="tick-sep"></div>
+    <div class="tick-item">
+      <div class="tick-num">100%</div>
+      <div class="tick-label">فيديوهات<br>شرح</div>
+    </div>
+    <div class="tick-sep"></div>
+    <div class="tick-item">
+      <div class="tick-num">يومي</div>
+      <div class="tick-label">رد<br>واتساب</div>
+    </div>
+    <div class="tick-sep"></div>
+    <div class="tick-item">
+      <div class="tick-num">50%</div>
+      <div class="tick-label">خصم<br>حالي</div>
+    </div>
+    <div class="tick-sep"></div>
+  </div>
+</div>
+
+<!-- ===================== WHY MEDICAL ===================== -->
+<section class="medical-why">
+  <div class="s-eyebrow reveal">ليه الفرق كبير</div>
+  <h2 class="s-h2 reveal">الطب بيفرق — مش كلام</h2>
+  <p class="s-body reveal">الكوتش العادي بيديك برنامج، الطبيب بيفهم جسمك من الداخل. ده الفرق اللي بيحمي صحتك ويضمن نتيجتك.</p>
+
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-ic">🔬</div>
+      <h3>تقييم طبي حقيقي</h3>
+      <p>الجسم مش بس ظاهر — في حالات بتأثر على الوزن والعضلات محتاج طبيب يشوفها. د. عمرو بيبدأ بتقييم طبي كامل.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-ic">🥗</div>
+      <h3>تغذية علمية مش تخمين</h3>
+      <p>خطة الأكل مش copy-paste من الإنترنت. تغذية علمية مبنية على احتياجاتك الفعلية وأي حالة صحية عندك.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-ic">⚠️</div>
+      <h3>أمان كامل</h3>
+      <p>أي تمرين أو نظام غذائي مع طبيب = ضمان إنك مش هتأذي نفسك. ده بيفرق خصوصاً للناس عندها أي ملاحظات صحية.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-ic">📊</div>
+      <h3>نتايج مستدامة</h3>
+      <p>مش diet بتخس وبعدين ترجع. خطة طبية علمية بتعمل تغيير حقيقي في الجسم يستمر بعد البرنامج.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RESULTS ===================== -->
+<section class="results-sec">
+  <div class="s-eyebrow reveal">النتايج بتتكلم</div>
+  <h2 class="s-h2 reveal">أرقام حقيقية<br>من متدربين حقيقيين</h2>
+  <p class="s-body reveal">مش وعود — أرقام فعلية من متدربين أنهوا الـ ٣ شهور مع دكتور عمرو.</p>
+
+  <div class="results-grid">
+    <div class="result-card reveal">
+      <div class="result-emoji">⚖️</div>
+      <div class="result-num"><span>-14</span> كجم</div>
+      <div class="result-desc">متوسط خسارة الوزن خلال ٣ شهور</div>
+    </div>
+    <div class="result-card reveal">
+      <div class="result-emoji">💪</div>
+      <div class="result-num"><span>+200</span></div>
+      <div class="result-desc">متدرب استكمل البرنامج بنجاح</div>
+    </div>
+    <div class="result-card reveal">
+      <div class="result-emoji">📅</div>
+      <div class="result-num"><span>90</span> يوم</div>
+      <div class="result-desc">متابعة يومية مستمرة بدون انقطاع</div>
+    </div>
+    <div class="result-card reveal">
+      <div class="result-emoji">⭐</div>
+      <div class="result-num"><span>4.9</span>/5</div>
+      <div class="result-desc">تقييم متوسط المتدربين للبرنامج</div>
+    </div>
+  </div>
+
+  <div class="guarantee-strip reveal">
+    <div class="guarantee-icon">🛡️</div>
+    <div>
+      <div class="guarantee-title">ضمان الجدية — لو مش راضي في الأسبوع الأول</div>
+      <div class="guarantee-text">لو بدأت ومش حاسس إن البرنامج مناسبك في خلال ٧ أيام، دكتور عمرو بيتناقش معاك وبيعدل الخطة لحد ما تتأكد إنها صح ليك. هدفنا نتيجتك مش مجرد بيع.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== INCLUDES ===================== -->
+<section class="includes" id="includes">
+  <div class="s-eyebrow reveal">إيه اللي هاخده</div>
+  <h2 class="s-h2 reveal">كل حاجة محتاجها<br>في مكانها</h2>
+
+  <div class="inc-layout">
+    <div class="inc-list">
+      <div class="inc-item reveal">
+        <div class="inc-icon">🍽️</div>
+        <div>
+          <h4>خطة تغذية مخصصة طبياً</h4>
+          <p>مش نظام عام — تغذية مصممة لجسمك وحالتك الصحية وأهدافك.</p>
+        </div>
+      </div>
+      <div class="inc-item reveal">
+        <div class="inc-icon">💪</div>
+        <div>
+          <h4>برنامج تمرين مشروح بالفيديو</h4>
+          <p>كل تمرين مشروح بفيديو — تعرف تعمله صح من أول يوم.</p>
+        </div>
+      </div>
+      <div class="inc-item reveal">
+        <div class="inc-icon">💬</div>
+        <div>
+          <h4>متابعة يومية على واتساب</h4>
+          <p>بتكلم الدكتور مباشرة — مش بوت مش assistant. رد حقيقي كل يوم.</p>
+        </div>
+      </div>
+      <div class="inc-item reveal">
+        <div class="inc-icon">📹</div>
+        <div>
+          <h4>فيديوهات شرح الأكل والتمرين</h4>
+          <p>محتوى تعليمي مرئي لكل حاجة في البرنامج عشان تفهم مش بس تعمل.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="inc-highlight reveal">
+      <div class="inc-hl-title">
+        ٣ شهور كاملة من<br>
+        <span class="t">الإشراف الطبي</span>
+      </div>
+      <ul class="inc-hl-points">
+        <li>تقييم طبي في البداية وفي النهاية</li>
+        <li>تعديل الخطة حسب استجابة جسمك</li>
+        <li>إجابة على أي سؤال طبي أو غذائي</li>
+        <li>خطة حفاظ على النتيجة بعد الـ ٣ شهور</li>
+      </ul>
+      <div class="inc-hl-price">
+        <div>
+          <div class="was">2,000 جنيه</div>
+          <div class="now-label">مع خصم 50%</div>
+          <div style="display:flex;align-items:baseline;gap:.4rem;margin-top:.2rem;">
+            <div class="now">1,000</div>
+            <div class="cur">جنيه</div>
+          </div>
+        </div>
+        <div class="discount-tag">وفّر 1,000 جنيه</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+<section class="testi">
+  <div class="s-eyebrow reveal">من واقع التجربة</div>
+  <h2 class="s-h2 reveal">بيقولوا إيه المتدربين؟</h2>
+
+  <div class="t-grid">
+    <div class="t-card reveal">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">"جربت أكتر من كوتش قبل كده، بس الفرق مع دكتور عمرو إنه <strong>طبيب وبيفهم جسمي</strong> مش بس بيديني شيت أكل. خسيت ١٤ كيلو في الـ ٣ شهور."</p>
+      <div class="t-author">
+        <div class="t-av n">ن</div>
+        <div>
+          <div class="t-name">نور م.</div>
+          <div class="t-meta">خسرت ١٤ كيلو في ٣ شهور</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="t-card reveal">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">"اللي أثّر فيا إن الدكتور لقى مشكلة صحية كنت مش عارفها وكانت بتأثر على وزني. <strong>من غير ما يتعالج كنت هفضل في نفس المكان.</strong>"</p>
+      <div class="t-author">
+        <div class="t-av t">أ</div>
+        <div>
+          <div class="t-name">أحمد ر.</div>
+          <div class="t-meta">تحول كامل في ٣ شهور</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="t-card reveal">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">"الفيديوهات فرقت معايا جداً — <strong>بشوف الشرح وبعمله صح</strong> من أول مرة. والمتابعة على واتساب حاسس إن في دكتور معايا طول اليوم."</p>
+      <div class="t-author">
+        <div class="t-av g">س</div>
+        <div>
+          <div class="t-name">سمر ك.</div>
+          <div class="t-meta">بنت عضل + خسارة دهون</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== OFFER ===================== -->
+<section class="offer-sec" id="offer">
+  <div class="s-eyebrow reveal">العرض الحالي</div>
+  <div class="spots-badge reveal">
+    <div class="spots-dot"></div>
+    <span class="spots-text">باقي ٥ أماكن فقط من ٢٠</span>
+  </div>
+  <h2 class="s-h2 reveal">باقة الـ ٣ شهور<br>بخصم ٥٠٪</h2>
+  <p class="s-body reveal">عرض محدود — السعر ده مش هيفضل.</p>
+
+  <div class="offer-card reveal">
+    <div class="oc-top">
+      <div>
+        <div class="oc-label">إجمالي الباقة</div>
+        <div class="oc-price-wrap">
+          <div class="oc-now">1,000</div>
+          <div class="oc-cur">جنيه</div>
+        </div>
+        <div class="oc-duration">٣ شهور متابعة كاملة</div>
+      </div>
+      <div class="oc-was">
+        <div class="was-price">2,000</div>
+        <div class="oc-badge">خصم 50%</div>
+      </div>
+    </div>
+
+    <div class="oc-features">
+      <div class="oc-feat">خطة تغذية طبية مخصصة</div>
+      <div class="oc-feat">برنامج تمرين كامل</div>
+      <div class="oc-feat">فيديوهات شرح الأكل والتمرين</div>
+      <div class="oc-feat">متابعة يومية واتساب</div>
+      <div class="oc-feat">تعديل الخطة حسب تقدمك</div>
+      <div class="oc-feat">إشراف طبي كامل ٣ شهور</div>
+    </div>
+
+    <div class="oc-cta">
+      <a href="https://wa.me/201000000000?text=أهلاً دكتور عمرو، عايز أعرف أكتر عن باقة التحول" class="wa-main" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 1C5.925 1 1 5.925 1 12c0 1.997.525 3.87 1.428 5.496L1 23l5.626-1.406A11.945 11.945 0 0 0 12 23c6.075 0 11-4.925 11-11S18.075 1 12 1zm0 20a9.927 9.927 0 0 1-5.03-1.362l-.36-.214-3.738.934.994-3.643-.235-.374A9.944 9.944 0 0 1 2 12c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10z"/></svg>
+        احجز مكانك على واتساب
+      </a>
+      <div class="oc-note">رد سريع · بدون التزام · أماكن محدودة</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="faq-s">
+  <div class="s-eyebrow reveal">أسئلة شائعة</div>
+  <h2 class="s-h2 reveal">عندك سؤال؟</h2>
+
+  <div class="faq-list reveal">
+    <div class="faq-item">
+      <button class="faq-btn" onclick="tog(this)">
+        إيه الفرق بين دكتور عمرو وأي كوتش عادي؟
+        <span class="ico">+</span>
+      </button>
+      <div class="faq-ans">الفرق الأساسي إن دكتور عمرو طبيب بشري فاهم الجسم علمياً من الداخل. بيقدر يكشف مشاكل صحية بتأثر على الوزن والجسم، وبيعمل خطة تغذية علمية دقيقة مش مجرد رأي.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="tog(this)">
+        المتابعة على واتساب يعني إيه بالظبط؟
+        <span class="ico">+</span>
+      </button>
+      <div class="faq-ans">يعني بتبعت أكلك وتمرينك يومياً وبتلاقي رد حقيقي من الدكتور نفسه. أي سؤال أي وقت — مش bot مش assistant.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="tog(this)">
+        لو معنديش وقت كتير، البرنامج ينفع؟
+        <span class="ico">+</span>
+      </button>
+      <div class="faq-ans">أيوه. الخطة بتتكيف مع وقتك الفعلي. مش لازم تكون free طول الوقت — المهم الاستمرارية.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="tog(this)">
+        إمتى يبدأ البرنامج بعد الحجز؟
+        <span class="ico">+</span>
+      </button>
+      <div class="faq-ans">بعد التواصل على واتساب، الدكتور بيجمع بياناتك ويعمل خطتك في خلال يومين على الأكتر.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="tog(this)">
+        الخصم 50% هيفضل؟
+        <span class="ico">+</span>
+      </button>
+      <div class="faq-ans">العرض ده محدود — بيتم لعدد معين من المتدربين، بعدين السعر بيرجع للأصلي. لو مهتم احجز دلوقتي.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FINAL CTA ===================== -->
+<section class="final">
+  <div class="s-eyebrow reveal">الخطوة الجاية</div>
+  <h2 class="s-h2 reveal">جسمك يستاهل<br>إشراف طبي حقيقي</h2>
+  <p class="s-body reveal">رسالة واحدة على واتساب وتبدأ رحلتك مع الكوتش الطبي الوحيد اللي هيشتغل معاك بشكل شخصي.</p>
+
+  <div class="final-btns">
+    <a href="https://wa.me/201000000000?text=أهلاً دكتور عمرو، عايز أعرف أكتر عن باقة الـ ٣ شهور" class="wa-final reveal" target="_blank">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 1C5.925 1 1 5.925 1 12c0 1.997.525 3.87 1.428 5.496L1 23l5.626-1.406A11.945 11.945 0 0 0 12 23c6.075 0 11-4.925 11-11S18.075 1 12 1zm0 20a9.927 9.927 0 0 1-5.03-1.362l-.36-.214-3.738.934.994-3.643-.235-.374A9.944 9.944 0 0 1 2 12c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10z"/></svg>
+      راسل الدكتور على واتساب
+    </a>
+    <p class="final-note reveal">رد خلال ساعات · عرض الخصم محدود · ٣ شهور تغيّر جسمك</p>
+  </div>
+</section>
+
+<!-- STICKY BOTTOM CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-inner">
+    <div class="sticky-price">
+      <span class="sp-now">١٬٠٠٠ جنيه</span>
+      <span class="sp-was">٢٬٠٠٠ جنيه</span>
+    </div>
+    <a href="https://wa.me/201000000000?text=أهلاً دكتور عمرو، عايز أعرف أكتر عن باقة التحول" class="sticky-btn" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 1C5.925 1 1 5.925 1 12c0 1.997.525 3.87 1.428 5.496L1 23l5.626-1.406A11.945 11.945 0 0 0 12 23c6.075 0 11-4.925 11-11S18.075 1 12 1zm0 20a9.927 9.927 0 0 1-5.03-1.362l-.36-.214-3.738.934.994-3.643-.235-.374A9.944 9.944 0 0 1 2 12c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10z"/></svg>
+      احجز مكانك دلوقتي
+    </a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 د. عمرو — Medical Fitness Coaching · جميع الحقوق محفوظة</p>
+</footer>
+
+<script>
+// Nav
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('solid', window.scrollY > 40);
+});
+
+// FAQ
+function tog(btn) {
+  const ans = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  document.querySelectorAll('.faq-btn').forEach(b => {
+    b.classList.remove('open');
+    b.nextElementSibling.classList.remove('open');
+  });
+  if (!isOpen) {
+    btn.classList.add('open');
+    ans.classList.add('open');
+  }
+}
+
+// Reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('vis');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Countdown Timer
+(function() {
+  // Set end time: store in session so it's consistent per session
+  let endTime = sessionStorage.getItem('offerEnd');
+  if (!endTime) {
+    endTime = Date.now() + (23 * 3600 + 47 * 60 + 12) * 1000;
+    sessionStorage.setItem('offerEnd', endTime);
+  }
+  endTime = parseInt(endTime);
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    const diff = endTime - Date.now();
+    if (diff <= 0) {
+      document.getElementById('t-h').textContent = '00';
+      document.getElementById('t-m').textContent = '00';
+      document.getElementById('t-s').textContent = '00';
+      return;
+    }
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('t-h').textContent = pad(h);
+    document.getElementById('t-m').textContent = pad(m);
+    document.getElementById('t-s').textContent = pad(s);
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+
+// Sticky CTA — show after scrolling past hero
+const stickyCta = document.getElementById('stickyCta');
+const hero = document.querySelector('.hero');
+function checkSticky() {
+  const heroBottom = hero.getBoundingClientRect().bottom;
+  if (heroBottom < 0) {
+    stickyCta.classList.add('show');
+  } else {
+    stickyCta.classList.remove('show');
+  }
+}
+window.addEventListener('scroll', checkSticky, { passive: true });
+</script>
+</body>
+</html>
