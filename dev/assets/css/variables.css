@@ -1,0 +1,21 @@
+/* ============================================================
+   variables.css — Ahmed Ehab Coaching
+   00. Design Tokens
+   ============================================================ */
+
+:root {
+  /* Palette */
+  --white:    #ffffff;
+  --off:      #f7f6f3;
+  --paper:    #f0ede6;
+  --line:     #e8e4dc;
+  --muted:    #b0a898;
+  --mid:      #5a5550;
+  --text:     #1a1816;
+  --ink:      #111210;
+  --card-bg:  #faf9f6;
+
+  /* Brand */
+  --accent:   #2a6b4a;
+  --accent2:  #c8883c;
+}
