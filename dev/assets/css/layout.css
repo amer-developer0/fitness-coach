@@ -4,13 +4,7 @@
    ============================================================ */
 
 
-/* Hero layout */
-.hero {
-  display:               grid;
-  grid-template-columns: 1fr;
-  gap:                   4rem;
-  align-items:           center;
-}
+   
 
 /* Problem grid */
 .problem-grid {
@@ -39,6 +33,7 @@
 
 /* Transformations wrapper */
 .transforms-wrapper {
+  position:   relative;
   display:     flex;
   align-items: center;
   gap:         0.75rem;
@@ -109,4 +104,20 @@
   align-items:    center;
   gap:            1rem;
   margin-top:     2.5rem;
+}
+
+
+a, button, input, textarea, select, [role="button"] {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+a:focus, button:focus, input:focus, .card:focus {
+    outline: none;
+}
+
+
+a:focus-visible, button:focus-visible, .card:focus-visible {
+    outline: 2px solid var(--accent); 
+    outline-offset: 3px;
 }
