@@ -1457,3 +1457,30 @@ footer {
     margin-right: auto;
   }
 }
+
+/* =========================
+   NAV LOGO (ENGLISH STYLE)
+   ========================= */
+
+.nav-logo {
+  font-family: 'Tajawal', sans-serif;
+  font-weight: 800;              /* bold قوي */
+  font-size: 1.4rem;
+  letter-spacing: 1px;           /* يدي إحساس براند */
+  color: var(--text);
+  text-transform: uppercase;    /* شكل clean */
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* جزء مميز من الاسم */
+.nav-logo span {
+  color: var(--accent);
+}
+
+/* Hover بسيط */
+.nav-logo:hover {
+  letter-spacing: 1.5px;
+  transition: 0.2s ease;
+}
