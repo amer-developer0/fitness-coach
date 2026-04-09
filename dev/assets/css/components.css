@@ -582,6 +582,12 @@ nav.scrolled {
   text-align: center;
 }
 
+.pricing-sec .s-body {
+  margin-left:  auto;
+  margin-right: auto;
+  margin-bottom: 2.5rem;
+}
+
 /* ---- Tabs ---- */
 .pricing-tabs {
   display:        inline-flex;
