@@ -98,8 +98,7 @@
     container.querySelectorAll('.reveal').forEach(el => el.classList.add('vis'));
   }
 
-  buildCards(cfg.pricing?.monthly, 'tab-monthly');
-  buildCards(cfg.pricing?.weekly,  'tab-weekly');
+buildCards(cfg.pricing?.weekly, 'tab-weekly');
 
   // ══════════════════════════════════════════════════════════════
   // 5. الـ FAQ
