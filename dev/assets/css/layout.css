@@ -1,12 +1,110 @@
 /* ============================================================
-   layout.css — Ahmed Ehab Coaching
-   Layout & structural grid rules extracted per section
+   LAYOUT.CSS — Page Structure, Sections & Structural Layout
+   ============================================================
+   الهيكل العام للصفحة — السكاشن، الجريد، والعناصر الهيكلية
    ============================================================ */
 
 
-   
+/* ------------------------------------------------------------
+   📐 SECTION BASE — القاعدة المشتركة لكل السكاشن
+   ------------------------------------------------------------ */
+section {
+  padding: 5.5rem 7vw;
+}
 
-/* Problem grid */
+
+/* ============================================================
+   🦸 HERO SECTION — القسم الرئيسي الأول
+   ============================================================ */
+
+.hero {
+  min-height:        100vh;
+  padding:           8rem 7vw 6rem;
+  display:           grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap:               4rem;
+  align-items:       center;
+  position:          relative;
+  overflow:          hidden;
+  background:        var(--off);
+}
+
+/* نمط النقاط في الخلفية */
+.hero::before {
+  content:          '';
+  position:         absolute;
+  inset:            0;
+  background-image: radial-gradient(var(--line) 1.2px, transparent 1.2px);
+  background-size:  28px 28px;
+  opacity:          0.6;
+  pointer-events:   none;
+}
+
+/* تدرج يخفي الخلفية على الجانب الأيسر */
+.hero::after {
+  content:        '';
+  position:       absolute;
+  inset:          0;
+  background:     radial-gradient(
+                    ellipse 60% 70% at 30% 50%,
+                    rgba(247, 246, 243, 0) 0%,
+                    var(--off) 80%
+                  );
+  pointer-events: none;
+}
+
+/* الجانب الأيسر — النصوص */
+.hero-left {
+  position:   relative;
+  z-index:    2;
+  text-align: right;
+  margin-top: 40px;
+}
+
+/* الجانب الأيمن — الصورة */
+.hero-right {
+  position:        relative;
+  display:         flex;
+  align-items:     flex-end;
+  justify-content: center;
+}
+
+.hero-right img {
+  width:           100%;
+  max-width:       420px;
+  height:          auto;
+  object-fit:      contain;
+  object-position: center top;
+  z-index:         1;
+  filter:          contrast(1.08) brightness(1.05) saturate(1.08);
+}
+
+/* تدرج يُذيب الصورة في الخلفية */
+.hero-right::after {
+  content:    '';
+  position:   absolute;
+  bottom:     0;
+  width:      100%;
+  height:     30%;
+  background: linear-gradient(
+                to bottom,
+                rgba(242, 240, 234, 0)   0%,
+                rgba(242, 240, 234, 0.7) 85%,
+                var(--off)               100%
+              );
+  z-index:    2;
+}
+
+
+/* ============================================================
+   🚫 PROBLEM SECTION — قسم المشكلة
+   ============================================================ */
+
+.problem {
+  background: var(--off);
+  position:   relative;
+}
+
 .problem-grid {
   display:               grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -14,7 +112,15 @@
   margin-top:            3rem;
 }
 
-/* How It Works steps grid */
+
+/* ============================================================
+   ⚙️ HOW IT WORKS SECTION — كيف يعمل
+   ============================================================ */
+
+.how {
+  background: var(--white);
+}
+
 .how-steps {
   display:               grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -23,7 +129,34 @@
   position:              relative;
 }
 
-/* Offer grid */
+/* الخط الأفقي الرابط بين الخطوات */
+.how-steps::before {
+  content:    '';
+  position:   absolute;
+  top:        28px;
+  right:      10%;
+  left:       10%;
+  height:     1px;
+  background: var(--line);
+  z-index:    0;
+}
+
+.step {
+  text-align: center;
+  padding:    0 1.5rem;
+  position:   relative;
+  z-index:    1;
+}
+
+
+/* ============================================================
+   🎁 OFFER SECTION — قسم العروض
+   ============================================================ */
+
+.offer {
+  background: var(--off);
+}
+
 .offer-grid {
   display:               grid;
   grid-template-columns: 1fr 1fr;
@@ -31,31 +164,115 @@
   margin-top:            3rem;
 }
 
-/* Transformations wrapper */
+
+/* ============================================================
+   🔄 TRANSFORMS SECTION — قسم نتائج التحول
+   ============================================================ */
+
+.transforms-sec {
+  padding:    6rem 7vw;
+  background: var(--off);
+  text-align: right;
+  overflow:   hidden;
+}
+
 .transforms-wrapper {
-  position:   relative;
+  position:    relative;
   display:     flex;
   align-items: center;
   gap:         0.75rem;
   margin-top:  3rem;
 }
 
+.transforms-track-outer {
+  width:    100%;
+  overflow: hidden;
+}
+
 .transforms-track {
   display:    flex;
   gap:        1.5rem;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
   padding:    1rem 0 1.5rem;
 }
 
-/* Pricing cards grid */
-.pricing-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.4rem;
-  max-width: 1100px;
-  margin: 0 auto;
+/* الفاصل الوسطي بين صورتي before/after */
+.transforms-divider {
+  height:     1px;
+  background: var(--line);
+  margin:     4rem 0;
 }
 
-/* Start steps */
+
+/* ============================================================
+   💬 FEEDBACK SECTION — قسم آراء العملاء
+   ============================================================ */
+
+.feedback-row {
+  display:                  flex;
+  gap:                      1.2rem;
+  margin-top:               3rem;
+  overflow-x:               auto;
+  padding-bottom:           1rem;
+  scroll-snap-type:         x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width:          none;
+}
+
+.feedback-row::-webkit-scrollbar {
+  display: none;
+}
+
+.fb-card {
+  flex:            0 0 220px;
+  scroll-snap-align: start;
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  gap:             0.75rem;
+}
+
+
+/* ============================================================
+   💰 PRICING SECTION — قسم الأسعار
+   ============================================================ */
+
+.pricing-sec {
+  padding:    6rem 7vw;
+  background: var(--white);
+  text-align: center;
+}
+
+.pricing-sec .s-body {
+  margin-left:   auto;
+  margin-right:  auto;
+  margin-bottom: 2.5rem;
+}
+
+.pricing-cards {
+  display:               none;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap:                   1.4rem;
+  max-width:             1100px;
+  margin:                0 auto;
+}
+
+.pricing-cards.active {
+  display: grid;
+}
+
+
+/* ============================================================
+   🚀 START / CTA SECTION — قسم ابدأ الآن
+   ============================================================ */
+
+.start-sec {
+  padding:    6rem 7vw;
+  background: var(--white);
+  text-align: center;
+}
+
 .start-steps {
   display:         flex;
   align-items:     center;
@@ -66,7 +283,25 @@
   flex-wrap:       wrap;
 }
 
-/* Payment cards */
+.start-step {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  gap:            1rem;
+  flex:           1;
+  min-width:      160px;
+  max-width:      220px;
+}
+
+/* الخط الرابط بين خطوات الـ start */
+.step-connector {
+  flex:       0 0 40px;
+  height:     2px;
+  background: var(--line);
+  margin-bottom: 2rem;
+}
+
+/* بطاقات طرق الدفع */
 .payment-cards {
   display:         flex;
   flex-wrap:       wrap;
@@ -76,36 +311,155 @@
   margin:          0 auto;
 }
 
-/* FAQ list */
+.payment-card {
+  display:     flex;
+  align-items: center;
+  gap:         1rem;
+  background:  var(--card-bg);
+  border:      1.5px solid var(--line);
+  border-radius: 16px;
+  padding:     1.2rem 1.5rem;
+  flex:        1;
+  min-width:   240px;
+  max-width:   280px;
+  text-align:  right;
+  transition:  border-color 0.2s, box-shadow 0.2s;
+}
+
+.payment-card:hover {
+  border-color: var(--accent);
+  box-shadow:   0 4px 20px rgba(42, 107, 74, 0.1);
+}
+
+
+/* ============================================================
+   ❓ FAQ SECTION — الأسئلة الشائعة
+   ============================================================ */
+
+.faq-sec {
+  padding:    6rem 7vw;
+  background: var(--off);
+  text-align: center;
+}
+
 .faq-list {
   max-width:      680px;
   margin:         3rem auto 0;
+  text-align:     right;
   display:        flex;
   flex-direction: column;
   gap:            0.75rem;
 }
 
-/* Final CTA wrap */
+
+/* ============================================================
+   🏁 FINAL CTA SECTION — القسم الختامي
+   ============================================================ */
+
+.final {
+  padding:    6rem 7vw;
+  background: var(--off);
+  text-align: center;
+  border-top: 1px solid var(--line);
+}
+
+.final .s-body {
+  text-align:   center;
+  max-width:    500px;
+  margin-left:  auto;
+  margin-right: auto;
+}
+
 .final-cta-wrap {
-  display:        flex;
-  flex-direction: column;
-  align-items:    center;
-  gap:            1rem;
-  margin-top:     2.5rem;
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  gap:             1rem;
+  margin-top:      2.5rem;
 }
 
 
-a, button, input, textarea, select, [role="button"] {
-    -webkit-tap-highlight-color: transparent;
+/* ============================================================
+   🖼️ VISUAL BANNER — البانر المرئي
+   ============================================================ */
+
+.visual-banner {
+  position:        relative;
+  height:          450px;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  overflow:        hidden;
+  background:      var(--ink);
+  clip-path:       inset(0 0 0 0);
+  margin-top:      100px;
+  margin-bottom:   100px;
+}
+
+/* صورة الخلفية بتأثير parallax */
+.visual-banner::before {
+  content:           "";
+  position:          fixed;
+  top:               0;
+  left:              0;
+  width:             100%;
+  height:            100%;
+  background-image:  url('../images/other/banner.avif');
+  background-size:   cover;
+  background-position: center;
+  z-index:           1;
+  filter:            brightness(0.5);
+  -webkit-transform: translateZ(0);
+  transform:         translateZ(0);
+}
+
+/* تدرج فوق الصورة */
+.visual-banner::after {
+  content:    '';
+  position:   absolute;
+  inset:      0;
+  background: linear-gradient(
+                to bottom,
+                var(--white)   0%,
+                transparent   20%,
+                transparent   80%,
+                var(--off)   100%
+              );
+  z-index:    2;
+}
+
+.banner-content {
+  position: relative;
+  z-index:  3;
+  text-align: center;
+  padding:  0 10vw;
 }
 
 
-a:focus, button:focus, input:focus, .card:focus {
-    outline: none;
+/* ============================================================
+   🦶 FOOTER — الفوتر
+   ============================================================ */
+
+footer {
+  background:     var(--off);
+  border-top:     1px solid var(--line);
+  padding:        1.5rem 7vw;
+  text-align:     center;
+  font-size:      0.78rem;
+  color:          var(--muted);
+  letter-spacing: 0.06em;
 }
 
 
-a:focus-visible, button:focus-visible, .card:focus-visible {
-    outline: 2px solid var(--accent); 
-    outline-offset: 3px;
+/* ============================================================
+   🧭 TRUST STRIP — شريط الثقة
+   ============================================================ */
+
+.trust-strip {
+  background:      var(--ink);
+  padding:         1.4rem 7vw;
+  display:         flex;
+  flex-wrap:       wrap;
+  justify-content: center;
+  gap:             1rem;
 }
