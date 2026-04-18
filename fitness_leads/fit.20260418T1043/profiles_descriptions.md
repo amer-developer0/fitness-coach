@@ -1,0 +1,28 @@
+إليك تحليل بيانات حسابات انستجرام المستخرجة من الصور المرفقة، مرتبة حسب ترتيب رفع الصور:
+
+| اسم الحساب | اليوزرنيم | عدد المتابعين | البيو كاملاً | طريقة الاشتراك | شهادات أو إنجازات | Brand/Team account |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Mohammed A. Raafat | raafat_00 | 22.7K | Coaching, Model - Get Ur Offers by Code ➡️ (RAFAT10) @anubix_egypt @aurafit_eg @at_supplements @sarhan.supplement @game_gear_nutrition | غير محدد (غالباً DM) | غير محدد | لا |
+| Arafa \| Online Coach | arafacoaching | 9,808 | Gym Content 🏋️ "محدش بيحاول وبيجيب صفر" Founder @flex_gainzz Co Founder @kix_labs | لينك (Linktree) | غير محدد | لا |
+| Dr.Fares \|\| online coaching | fares.coaching | 923 | 🤍وَأَنْ لَيْسَ لِلْإِنْسَانِ إِلَّا مَا سَعَىٰ physiotherapist Online coaching | لينك (TikTok) | أخصائي علاج طبيعي (Physiotherapist) | لا |
+| KHALED ANAS \| FITNESS TRAINER | khalledanas | 5,842 | Fitness Trainer وَقُل رَّبِّ زِدْنِي عِلْمًا 🇸🇦📍 NASM CPT 📩 Dm for online coaching details team_khalledanas@ :Sponsored by run.sportswear.sa@ 👕 timepower2@ 💊 | DM | NASM CPT | لا |
+| FaraG | cap_m.farag | 3,815 | Public figure Sports Science student 🎓 Online Coach 💪 Bodybuilder 🦍 Car lover 👀 d i f f e r e n t ⚡️ | غير محدد (غالباً DM) | طالب علوم رياضة (Sports Science student) | لا |
+| Ahmad_Qaissi_Fit | ahmad_qaissi_fit | 2,826 | Fitness Trainer {لا يكلف الله نفسًا إلا وسعها} The Godfather _V العرّاب V Personal trainer & online coaching Trainer of trainers (TOT) in Ifpa CPT by Ifpa & sioss | لينك (YouTube) | مدرب مدربين (TOT)، حاصل على CPT من IFPA & SIOSS | لا |
+| Ahmed ElSherif \| Online Coach | ahmedelsheriif__ | 13.9K | Coach Online Women's Fitness Training 📩 DM me 'Coaching' for Online Coaching | DM | غير محدد | لا |
+| Fitbros | fitbros_911 | 14.5K | @evolveway : fitbros10 @hba.wear : fitbros10 For online coaching tap here ⬇️ | لينك (موقع خارجي) | غير محدد | نعم |
+| Amr Elsisi | 2k1sisi | 2,834 | 186cm \| 104KG \| 24 DM "Coaching" For Online Coaching Software Engineer, Future IFBB Pro. Certified NASM Personal Trainer ⌛️ | DM | مدرب معتمد NASM | لا |
+| H.A.K. Hut Anurak Pro Bodybuilder | h.a.k._hut_anurak_online_coach | 44.7K | Personal blog •📲 Coaching Online/1:1 • Pro Bodybuilder/ PCA 🏆 / 3X 🥇 • NPC IFBB Pro qualifier Top 4 • Mrthailand 3X 🥈 • h.a.k._shop | غير محدد (غالباً DM) | بطل كمال أجسام محترف، بطل تايلاند 3 مرات | لا |
+| AHMAD SAM | ahmad_fitness95 | 384K | #الكوتش_احمدالدالي مدرب رياضة ولياقة بدنية / أخصائي تغذية 🍏🥑 مدرب اونلاين معتمد في المانيا 🇩🇪💪 ⬇️ Tiktok تابعني | لينك (TikTok) | أخصائي تغذية، مدرب معتمد في ألمانيا | لا |
+| Ammar Al Moghrabi | coach_ammar.mog | 2,576 | Personal Coach 🎯 Online Coaching 🔥 تدريب\|تغذية\|متابعة يومية 💡 معتمد من الاتحاد الرياضي 💪🏼 مئات النتائج الحقيقية 📩 DM to begin — 📲 او احجز عبر واتساب 👇🏼 | واتساب / DM | معتمد من الاتحاد الرياضي | لا |
+| Cap Kamal Khadir | cap_kamal11 | 1,291 | Bodybuilder theater player 24 years Online Coach 🇦🇪 Fat Loss & Muscle Gain Home & Gym Programs Results Based 💪 DM “START” ❤️ وما توفيقي الا بالله | DM | غير محدد | لا |
+| Moein Jamali | moeinfit2 | 470 | Fitness Trainer 100% Natural Physique ISSA Certified Personal Trainer / IFBB Coach 🇴🇲 Muscat , Oman 👇 Dm for Personal training / Online Coaching | DM / لينك (موقع ISSA) | مدرب معتمد ISSA، مدرب IFBB | لا |
+| Mohamad \| Personal Trainer Dubai | coach_mohamad_dxb | 1,676 | Coach I Help busy professionals over 30 to lose fat & build strength in 12 weeks📈 Obesity & Fat Loss Specialist🥇 🔗 Apply for coaching | لينك (Linktree) | أخصائي سمنة ونحافة | لا |
+| Mohamed Radwan | radwan.fitlife | 4,958 | 🥇 Mr.Universe Abudhabi 2023 🥈 Dubai Muscle show 2025 🚀 Ready to lose fat & build muscle? 💪 Personal 1:1 Online Coaching 📩 DM “COACH” now | DM | مستر يونيفرس أبوظبي 2023 | لا |
+| Hamed Samir \| Fitness Content \| Online Training | hamedsamirr | 11.4K | Coach @befit.360 ▫️ Empowering You to Achieve Fitness & Health ▫️ Comprehensive Online & Physical Training Program | لينك (YouTube) | غير محدد | لا |
+| Coach Ahmad Ariqat | ahmad.ariqat | 14.2K | Entrepreneur Athlete \| NASM-CPT Online Coach \| Rehab & Conditioning Weight Loss \| Senior Fitness \| 11+ yrs CPT @Elite Lab \| Host @RoyaTV DM to start | DM | مدرب معتمد NASM-CPT، خبير تأهيل | لا |
+| Ahmed Anas | captain.ahmed.anas | 3,332 | Personal Trainer _fitness+ Captain Massage+ nutrition specialist 🍏🍉🍇 اللياقة بدنيه اخصائي تغذيه Camera man cbc | غير محدد (رابط فيسبوك) | أخصائي تغذية، متخصص مساج | لا |
+| Karim Mohsn | captin.karimmohsn | 727K | { مدرب لياقة بدنيه واخصائي تغذيه } اساعدك ف الوصول لجسم صحي وحياه صحيه 🥑 مدرب لياقه بدنيه واخصائي تغذيه معتمد 🟢 للاشتراك ف تحدي عيد الاضحي اضغط ع اللينك 👇 | لينك | مدرب لياقة وأخصائي تغذية معتمد | لا |
+| Mohamed selem | coachmohamedselem | 624K | { مدرب لياقه بدنيه واخصائي تغذيه } Personal Coach 🟢 مدرب لياقه بدنيه واخصائي تغذيه معتمد 🌿 اساعدك في الوصول لجسم صحي وحياه صحيه 👇 لتفاصيل الاشتراك والحجز في المتابعه اضغط | واتساب (wa.me) | مدرب لياقة وأخصائي تغذية معتمد | لا |
+| Abdalrhman | abdalrhman.291 | 9,085 | Abdalrhman🤨 مدرب لياقه بدنيه . personal trainer ⚡️ Coach Gym\|Fitness\|Workout 💪 personal trainer ⚡️ ONLINE COACHING 📱 ⚡️. 💪🏼🤳🏼 Injury rehabilitation specialist and physiotherapist N | لينك (YouTube) | أخصائي تأهيل إصابات وأخصائي علاج طبيعي | لا |
+| شُعيب \| مدرب اونلاين | sh3.fit | 25.7K | Fitness Trainer 🏋️‍♂️ مدرب متخصص في خسارة الدهون وبناء العضلات 🍏 نصائح مجانية لتحقيق أهدافك الصحية 👇 رابط الاشتراك للتدريب الاونلاين | لينك (Google Forms) | غير محدد | لا |
+| Muhammad El - Hawary | coachhawary | 122K | Personal Trainer \| Muhammad El - Hawary Fitness Trainer Elite Personal Trainer @fitnessfirstme @fitnessfirstbaygate For Personal Training and Online Coaching WhatsApp... | واتساب | مدرب شخصي نخبة (Elite Personal Trainer) | لا |
